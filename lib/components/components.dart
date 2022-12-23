@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/svg.dart';
 import 'package:login_interface/theme/colors.dart';
 
@@ -75,10 +74,11 @@ Widget customTextField({
     );
 Widget customButton({
   required String text,
+  required double width,
 }) =>
     SizedBox(
       height: 44,
-      width: double.infinity,
+      width: width,
       child: ElevatedButton(
           onPressed: () {},
           style: ButtonStyle(
