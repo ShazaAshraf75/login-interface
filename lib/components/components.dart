@@ -6,7 +6,9 @@ Widget dfmsWidget(context) => Container(
       width: double.infinity,
       height: MediaQuery.of(context).size.height * 0.25,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(40),
+          borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(40),
+              bottomRight: Radius.circular(40)),
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomLeft,
