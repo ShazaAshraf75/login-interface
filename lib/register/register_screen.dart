@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_interface/components/components.dart';
 import 'package:login_interface/constants/constants.dart';
-import 'package:login_interface/login/login_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
   TextEditingController usernameController = TextEditingController();
@@ -29,7 +28,7 @@ class RegisterScreen extends StatelessWidget {
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.20,
                 width: MediaQuery.of(context).size.width * 1,
-                height: MediaQuery.of(context).size.height * 0.71,
+                height: MediaQuery.of(context).size.height * 0.58,
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 35),
                   padding:
@@ -62,7 +61,8 @@ class RegisterScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 30),
-                        customTextField(
+                        Expanded(
+                          child: customTextField(
                             controller: usernameController,
                             keyboardType: TextInputType.name,
                             hintText: 'Username',
@@ -73,8 +73,11 @@ class RegisterScreen extends StatelessWidget {
                               } else {
                                 return null;
                               }
-                            }),
-                        customTextField(
+                            },
+                          ),
+                        ),
+                        Expanded(
+                          child: customTextField(
                             controller: emailController,
                             keyboardType: TextInputType.emailAddress,
                             hintText: 'Email Address',
@@ -88,52 +91,60 @@ class RegisterScreen extends StatelessWidget {
                               } else {
                                 return null;
                               }
-                            }),
-                        customTextField(
-                            controller: mobileController,
-                            keyboardType: TextInputType.phone,
-                            hintText: 'Mobile Number',
-                            suffixIcon: phone,
-                            func: (value) {
-                              if (value!.isEmpty) {
-                                return "Mobile Number must not be empty";
-                              } else {
-                                return null;
-                              }
-                            }),
-                        customTextField(
-                            controller: passwordController,
-                            keyboardType: TextInputType.visiblePassword,
-                            hintText: 'Password',
-                            obscure: true,
-                            suffixIcon: eye,
-                            func: (value) {
-                              if (value!.isEmpty) {
-                                return "Password must not be empty";
-                              } else {
-                                return null;
-                              }
-                            }),
-                        customTextField(
-                            controller: confirmPasswordController,
-                            keyboardType: TextInputType.visiblePassword,
-                            hintText: 'Confirm Password',
-                            obscure: true,
-                            suffixIcon: eye,
-                            func: (value) {
-                              if (value!.isEmpty) {
-                                return "Password must not be empty";
-                              } else {
-                                return null;
-                              }
-                            }),
+                            },
+                          ),
+                        ),
+                        Expanded(
+                          child: customTextField(
+                              controller: mobileController,
+                              keyboardType: TextInputType.phone,
+                              hintText: 'Mobile Number',
+                              suffixIcon: phone,
+                              func: (value) {
+                                if (value!.isEmpty) {
+                                  return "Mobile Number must not be empty";
+                                } else {
+                                  return null;
+                                }
+                              }),
+                        ),
+                        Expanded(
+                          child: customTextField(
+                              controller: passwordController,
+                              keyboardType: TextInputType.visiblePassword,
+                              hintText: 'Password',
+                              obscure: true,
+                              suffixIcon: eye,
+                              func: (value) {
+                                if (value!.isEmpty) {
+                                  return "Password must not be empty";
+                                } else {
+                                  return null;
+                                }
+                              }),
+                        ),
+                        Expanded(
+                          child: customTextField(
+                              controller: confirmPasswordController,
+                              keyboardType: TextInputType.visiblePassword,
+                              hintText: 'Confirm Password',
+                              obscure: true,
+                              suffixIcon: eye,
+                              func: (value) {
+                                if (value!.isEmpty) {
+                                  return "Password must not be empty";
+                                } else {
+                                  return null;
+                                }
+                              }),
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
               Positioned(
-                  bottom: MediaQuery.of(context).size.height * 0.01,
+                  bottom: MediaQuery.of(context).size.height * 0.14,
                   child: Column(
                     children: [
                       customButton(
@@ -143,10 +154,12 @@ class RegisterScreen extends StatelessWidget {
                           question: "Already Have an Account?",
                           answer: "Login",
                           func: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => LoginScreen()));
+                            Navigator.pop(context);
+
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => LoginScreen()));
                           }),
                     ],
                   )),

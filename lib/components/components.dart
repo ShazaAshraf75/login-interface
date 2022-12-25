@@ -48,6 +48,7 @@ Widget customTextField({
           filled: true,
           fillColor: lightGreyColor,
           errorBorder: OutlineInputBorder(
+              // gapPadding: 20,
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Colors.red)),
           focusedBorder: OutlineInputBorder(
@@ -58,6 +59,7 @@ Widget customTextField({
               borderSide: BorderSide(color: lightGreyColor)),
           border: InputBorder.none,
           focusedErrorBorder: OutlineInputBorder(
+              // gapPadding: 20,
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Colors.red)),
           contentPadding: const EdgeInsets.all(12),

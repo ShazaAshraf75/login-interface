@@ -68,31 +68,35 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           const SizedBox(height: 30),
-                          customTextField(
-                              controller: usernameController,
-                              keyboardType: TextInputType.name,
-                              hintText: 'Username',
-                              suffixIcon: profile,
-                              func: (value) {
-                                if (value!.isEmpty) {
-                                  return "Username must not be empty";
-                                } else {
-                                  return null;
-                                }
-                              }),
-                          customTextField(
-                              controller: passwordController,
-                              keyboardType: TextInputType.visiblePassword,
-                              hintText: 'Password',
-                              obscure: true,
-                              suffixIcon: eye,
-                              func: (value) {
-                                if (value!.isEmpty) {
-                                  return "Password must not be empty";
-                                } else {
-                                  return null;
-                                }
-                              }),
+                          Expanded(
+                            child: customTextField(
+                                controller: usernameController,
+                                keyboardType: TextInputType.name,
+                                hintText: 'Username',
+                                suffixIcon: profile,
+                                func: (value) {
+                                  if (value!.isEmpty) {
+                                    return "Username must not be empty";
+                                  } else {
+                                    return null;
+                                  }
+                                }),
+                          ),
+                          Expanded(
+                            child: customTextField(
+                                controller: passwordController,
+                                keyboardType: TextInputType.visiblePassword,
+                                hintText: 'Password',
+                                obscure: true,
+                                suffixIcon: eye,
+                                func: (value) {
+                                  if (value!.isEmpty) {
+                                    return "Password must not be empty";
+                                  } else {
+                                    return null;
+                                  }
+                                }),
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
