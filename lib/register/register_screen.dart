@@ -76,6 +76,7 @@ class RegisterScreen extends StatelessWidget {
                             },
                           ),
                         ),
+                        const SizedBox(height: 8),
                         Expanded(
                           child: customTextField(
                             controller: emailController,
@@ -94,6 +95,7 @@ class RegisterScreen extends StatelessWidget {
                             },
                           ),
                         ),
+                        const SizedBox(height: 8),
                         Expanded(
                           child: customTextField(
                               controller: mobileController,
@@ -108,36 +110,45 @@ class RegisterScreen extends StatelessWidget {
                                 }
                               }),
                         ),
+                        const SizedBox(height: 8),
                         Expanded(
-                          child: customTextField(
-                              controller: passwordController,
-                              keyboardType: TextInputType.visiblePassword,
-                              hintText: 'Password',
-                              obscure: true,
-                              suffixIcon: eye,
-                              func: (value) {
-                                if (value!.isEmpty) {
-                                  return "Password must not be empty";
-                                } else {
-                                  return null;
-                                }
-                              }),
+                          child: Hero(
+                            tag: "key1",
+                            child: customTextField(
+                                controller: passwordController,
+                                keyboardType: TextInputType.visiblePassword,
+                                hintText: 'Password',
+                                obscure: true,
+                                suffixIcon: eye,
+                                func: (value) {
+                                  if (value!.isEmpty) {
+                                    return "Password must not be empty";
+                                  } else {
+                                    return null;
+                                  }
+                                }),
+                          ),
                         ),
+                        const SizedBox(height: 8),
                         Expanded(
-                          child: customTextField(
-                              controller: confirmPasswordController,
-                              keyboardType: TextInputType.visiblePassword,
-                              hintText: 'Confirm Password',
-                              obscure: true,
-                              suffixIcon: eye,
-                              func: (value) {
-                                if (value!.isEmpty) {
-                                  return "Password must not be empty";
-                                } else {
-                                  return null;
-                                }
-                              }),
+                          child: Hero(
+                            tag: "key2",
+                            child: customTextField(
+                                controller: confirmPasswordController,
+                                keyboardType: TextInputType.visiblePassword,
+                                hintText: 'Confirm Password',
+                                obscure: true,
+                                suffixIcon: eye,
+                                func: (value) {
+                                  if (value!.isEmpty) {
+                                    return "Password must not be empty";
+                                  } else {
+                                    return null;
+                                  }
+                                }),
+                          ),
                         ),
+                        const SizedBox(height: 8),
                       ],
                     ),
                   ),
@@ -155,11 +166,6 @@ class RegisterScreen extends StatelessWidget {
                           answer: "Login",
                           func: () {
                             Navigator.pop(context);
-
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => LoginScreen()));
                           }),
                     ],
                   )),

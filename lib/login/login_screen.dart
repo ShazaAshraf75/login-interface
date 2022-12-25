@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Positioned(
                   top: MediaQuery.of(context).size.height * 0.20,
                   width: MediaQuery.of(context).size.width * 1,
-                  height: MediaQuery.of(context).size.height * 0.38,
+                  height: MediaQuery.of(context).size.height * 0.37,
                   child: Container(
                     margin: const EdgeInsets.symmetric(horizontal: 35),
                     padding: const EdgeInsets.symmetric(
@@ -69,34 +69,42 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           const SizedBox(height: 30),
                           Expanded(
-                            child: customTextField(
-                                controller: usernameController,
-                                keyboardType: TextInputType.name,
-                                hintText: 'Username',
-                                suffixIcon: profile,
-                                func: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Username must not be empty";
-                                  } else {
-                                    return null;
-                                  }
-                                }),
+                            child: Hero(
+                              tag: "key1",
+                              child: customTextField(
+                                  controller: usernameController,
+                                  keyboardType: TextInputType.name,
+                                  hintText: 'Username',
+                                  suffixIcon: profile,
+                                  func: (value) {
+                                    if (value!.isEmpty) {
+                                      return "Username must not be empty";
+                                    } else {
+                                      return null;
+                                    }
+                                  }),
+                            ),
                           ),
+                          const SizedBox(height: 8),
                           Expanded(
-                            child: customTextField(
-                                controller: passwordController,
-                                keyboardType: TextInputType.visiblePassword,
-                                hintText: 'Password',
-                                obscure: true,
-                                suffixIcon: eye,
-                                func: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Password must not be empty";
-                                  } else {
-                                    return null;
-                                  }
-                                }),
+                            child: Hero(
+                              tag: "key2",
+                              child: customTextField(
+                                  controller: passwordController,
+                                  keyboardType: TextInputType.visiblePassword,
+                                  hintText: 'Password',
+                                  obscure: true,
+                                  suffixIcon: eye,
+                                  func: (value) {
+                                    if (value!.isEmpty) {
+                                      return "Password must not be empty";
+                                    } else {
+                                      return null;
+                                    }
+                                  }),
+                            ),
                           ),
+                          // const SizedBox(height: 10),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -127,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 Positioned(
-                    bottom: MediaQuery.of(context).size.height * 0.34,
+                    bottom: MediaQuery.of(context).size.height * 0.35,
                     child: Column(
                       children: [
                         customButton(
