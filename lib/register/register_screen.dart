@@ -29,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.20,
                 width: MediaQuery.of(context).size.width * 1,
-                height: MediaQuery.of(context).size.height * 0.62,
+                height: MediaQuery.of(context).size.height * 0.71,
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 35),
                   padding:
@@ -133,7 +133,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
-                  bottom: MediaQuery.of(context).size.height * 0.1,
+                  bottom: MediaQuery.of(context).size.height * 0.01,
                   child: Column(
                     children: [
                       customButton(
