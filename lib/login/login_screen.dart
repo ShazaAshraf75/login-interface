@@ -13,9 +13,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController usernameController = TextEditingController();
-
   TextEditingController passwordController = TextEditingController();
-
   var formKey = GlobalKey<FormState>();
 
   bool isSelected = false;
@@ -132,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             text: 'Login',
                             width: MediaQuery.of(context).size.width * 0.7),
                         accountWidget(
-                            question: "Don\'t Have an Account?",
+                            question: "Don't Have an Account?",
                             answer: " Sign Up",
                             func: () {
                               Navigator.push(
