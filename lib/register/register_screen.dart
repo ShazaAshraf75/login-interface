@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_interface/components/components.dart';
 import 'package:login_interface/constants/constants.dart';
+import 'package:login_interface/login/login_screen.dart';
 
 class RegisterScreen extends StatelessWidget {
   TextEditingController usernameController = TextEditingController();
@@ -165,7 +166,16 @@ class RegisterScreen extends StatelessWidget {
                           question: "Already Have an Account?",
                           answer: "Login",
                           func: () {
-                            Navigator.pop(context);
+                            Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (_, __, ___) => LoginScreen(),
+                                transitionDuration:
+                                    const Duration(milliseconds: 600),
+                                transitionsBuilder: (_, a, __, c) =>
+                                    FadeTransition(opacity: a, child: c),
+                              ),
+                            );
                           }),
                     ],
                   )),
