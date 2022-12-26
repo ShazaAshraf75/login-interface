@@ -79,55 +79,24 @@ class RegisterScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         Expanded(
-                          child: customTextField(
-                            controller: emailController,
-                            keyboardType: TextInputType.emailAddress,
-                            hintText: 'Email Address',
-                            suffixIcon: email,
-                            func: (value) {
-                              if (value!.isEmpty) {
-                                return "Email must not be empty";
-                              } else if (!value.contains("@") &&
-                                  !value.contains(".")) {
-                                return "Invalid Email Address";
-                              } else {
-                                return null;
-                              }
-                            },
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Expanded(
-                          child: customTextField(
-                              controller: mobileController,
-                              keyboardType: TextInputType.phone,
-                              hintText: 'Mobile Number',
-                              suffixIcon: phone,
-                              func: (value) {
-                                if (value!.isEmpty) {
-                                  return "Mobile Number must not be empty";
-                                } else {
-                                  return null;
-                                }
-                              }),
-                        ),
-                        const SizedBox(height: 8),
-                        Expanded(
                           child: Hero(
                             tag: "key1",
                             child: customTextField(
-                                controller: passwordController,
-                                keyboardType: TextInputType.visiblePassword,
-                                hintText: 'Password',
-                                obscure: true,
-                                suffixIcon: eye,
-                                func: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Password must not be empty";
-                                  } else {
-                                    return null;
-                                  }
-                                }),
+                              controller: emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              hintText: 'Email Address',
+                              suffixIcon: email,
+                              func: (value) {
+                                if (value!.isEmpty) {
+                                  return "Email must not be empty";
+                                } else if (!value.contains("@") &&
+                                    !value.contains(".")) {
+                                  return "Invalid Email Address";
+                                } else {
+                                  return null;
+                                }
+                              },
+                            ),
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -135,19 +104,50 @@ class RegisterScreen extends StatelessWidget {
                           child: Hero(
                             tag: "key2",
                             child: customTextField(
-                                controller: confirmPasswordController,
-                                keyboardType: TextInputType.visiblePassword,
-                                hintText: 'Confirm Password',
-                                obscure: true,
-                                suffixIcon: eye,
+                                controller: mobileController,
+                                keyboardType: TextInputType.phone,
+                                hintText: 'Mobile Number',
+                                suffixIcon: phone,
                                 func: (value) {
                                   if (value!.isEmpty) {
-                                    return "Password must not be empty";
+                                    return "Mobile Number must not be empty";
                                   } else {
                                     return null;
                                   }
                                 }),
                           ),
+                        ),
+                        const SizedBox(height: 8),
+                        Expanded(
+                          child: customTextField(
+                              controller: passwordController,
+                              keyboardType: TextInputType.visiblePassword,
+                              hintText: 'Password',
+                              obscure: true,
+                              suffixIcon: eye,
+                              func: (value) {
+                                if (value!.isEmpty) {
+                                  return "Password must not be empty";
+                                } else {
+                                  return null;
+                                }
+                              }),
+                        ),
+                        const SizedBox(height: 8),
+                        Expanded(
+                          child: customTextField(
+                              controller: confirmPasswordController,
+                              keyboardType: TextInputType.visiblePassword,
+                              hintText: 'Confirm Password',
+                              obscure: true,
+                              suffixIcon: eye,
+                              func: (value) {
+                                if (value!.isEmpty) {
+                                  return "Password must not be empty";
+                                } else {
+                                  return null;
+                                }
+                              }),
                         ),
                         const SizedBox(height: 8),
                       ],
