@@ -33,12 +33,6 @@ Widget customTextField({
   required String? Function(String?)? func,
   bool obscure = false,
 }) =>
-    // Container(
-    // height: 44,
-    // margin: const EdgeInsets.symmetric(vertical: 10),
-    // decoration: BoxDecoration(
-    //   borderRadius: BorderRadius.circular(12),
-    // ),
     Material(
       color: Colors.transparent,
       child: TextFormField(
@@ -79,7 +73,6 @@ Widget customTextField({
         ),
       ),
     );
-// );
 Widget customButton({
   required String text,
   required double width,
