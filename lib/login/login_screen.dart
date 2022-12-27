@@ -146,15 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             answer: " Sign Up",
                             func: () {
                               Navigator.push(
-                                context,
-                                PageRouteBuilder(
-                                  pageBuilder: (_, __, ___) => RegisterScreen(),
-                                  transitionDuration:
-                                      Duration(milliseconds: 600),
-                                  transitionsBuilder: (_, a, __, c) =>
-                                      FadeTransition(opacity: a, child: c),
-                                ),
-                              );
+                                  context, animateToRoute(RegisterScreen()));
                             }),
                       ],
                     )),

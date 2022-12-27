@@ -167,15 +167,7 @@ class RegisterScreen extends StatelessWidget {
                           answer: "Login",
                           func: () {
                             Navigator.push(
-                              context,
-                              PageRouteBuilder(
-                                pageBuilder: (_, __, ___) => LoginScreen(),
-                                transitionDuration:
-                                    const Duration(milliseconds: 600),
-                                transitionsBuilder: (_, a, __, c) =>
-                                    FadeTransition(opacity: a, child: c),
-                              ),
-                            );
+                                context, animateToRoute(LoginScreen()));
                           }),
                     ],
                   )),
