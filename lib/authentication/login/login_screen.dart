@@ -18,7 +18,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  var formKey = GlobalKey<FormState>();
+  var form1Key = GlobalKey<FormState>();
+  var form2Key = GlobalKey<FormState>();
 
   bool isSelected = false;
 
@@ -59,23 +60,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           )
                         ],
                       ),
-                      child: Form(
-                        key: formKey,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Text(
-                              "Login",
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontFamily: "MontserratS",
-                              ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Login",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontFamily: "MontserratS",
                             ),
-                            const SizedBox(height: 30),
-                            Expanded(
+                          ),
+                          const SizedBox(height: 30),
+                          Form(
+                            key: form1Key,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            child: Expanded(
                               child: Hero(
                                 tag: "key1",
                                 child: CustomTextField(
@@ -95,8 +97,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                             ),
-                            const SizedBox(height: 8),
-                            Expanded(
+                          ),
+                          const SizedBox(height: 8),
+                          Form(
+                            key: form2Key,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            child: Expanded(
                               child: Hero(
                                 tag: "key2",
                                 child: CustomTextField(
@@ -116,36 +123,36 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                             ),
-                            // const SizedBox(height: 10),
-                            Expanded(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Checkbox(
-                                    value: isSelected,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        isSelected = value!;
-                                      });
-                                    },
-                                    activeColor: darkPurpleColor,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(5)),
-                                    side: BorderSide(
-                                      color: Color.fromRGBO(201, 201, 201, 1),
-                                    ),
+                          ),
+                          // const SizedBox(height: 10),
+                          Expanded(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Checkbox(
+                                  value: isSelected,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      isSelected = value!;
+                                    });
+                                  },
+                                  activeColor: darkPurpleColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5)),
+                                  side: BorderSide(
+                                    color: Color.fromRGBO(201, 201, 201, 1),
                                   ),
-                                  Text(
-                                    "Remember me",
-                                    style: TextStyle(
-                                        fontFamily: "Montserrat", fontSize: 13),
-                                  ),
-                                  SizedBox(height: 30)
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                                ),
+                                Text(
+                                  "Remember me",
+                                  style: TextStyle(
+                                      fontFamily: "Montserrat", fontSize: 13),
+                                ),
+                                SizedBox(height: 30)
+                              ],
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   ),
@@ -158,7 +165,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             text: 'Login',
                             width: MediaQuery.of(context).size.width * 0.7,
                             func: () {
-                              formKey.currentState!.validate();
+                              form1Key.currentState!.validate();
+                              form2Key.currentState!.validate();
                             },
                           ),
                           AccountWidget(

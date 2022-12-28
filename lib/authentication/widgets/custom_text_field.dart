@@ -29,12 +29,14 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
+  var formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Material(
         color: Colors.transparent,
         child: TextFormField(
-          // autovalidateMode: AutovalidateMode.onUserInteraction,
+          // autovalidateMode: AutovalidateMode.disabled,
           validator: widget.func,
           obscureText: widget.obscure,
           controller: widget.controller,

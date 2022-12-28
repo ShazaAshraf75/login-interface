@@ -16,7 +16,12 @@ class RegisterScreen extends StatelessWidget {
   TextEditingController mobileController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
-  var formKey = GlobalKey<FormState>();
+  var form1Key = GlobalKey<FormState>();
+  var form2Key = GlobalKey<FormState>();
+  var form3Key = GlobalKey<FormState>();
+  var form4Key = GlobalKey<FormState>();
+  var form5Key = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,23 +58,23 @@ class RegisterScreen extends StatelessWidget {
                         )
                       ],
                     ),
-                    child: Form(
-                      key: formKey,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "Create Account",
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontFamily: "MontserratS",
-                            ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Create Account",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontFamily: "MontserratS",
                           ),
-                          const SizedBox(height: 30),
-                          Expanded(
+                        ),
+                        const SizedBox(height: 30),
+                        Form(
+                          key: form1Key,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          child: Expanded(
                             child: CustomTextField(
                               controller: usernameController,
                               keyboardType: TextInputType.name,
@@ -86,8 +91,12 @@ class RegisterScreen extends StatelessWidget {
                               isObscure: false,
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          Expanded(
+                        ),
+                        const SizedBox(height: 8),
+                        Form(
+                          key: form2Key,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          child: Expanded(
                             child: Hero(
                               tag: "key1",
                               child: CustomTextField(
@@ -110,8 +119,12 @@ class RegisterScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          Expanded(
+                        ),
+                        const SizedBox(height: 8),
+                        Form(
+                          key: form3Key,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          child: Expanded(
                             child: Hero(
                               tag: "key2",
                               child: CustomTextField(
@@ -131,8 +144,12 @@ class RegisterScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          Expanded(
+                        ),
+                        const SizedBox(height: 8),
+                        Form(
+                          key: form4Key,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          child: Expanded(
                             child: CustomTextField(
                               controller: passwordController,
                               keyboardType: TextInputType.visiblePassword,
@@ -149,8 +166,12 @@ class RegisterScreen extends StatelessWidget {
                               isObscure: true,
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          Expanded(
+                        ),
+                        const SizedBox(height: 8),
+                        Form(
+                          key: form5Key,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          child: Expanded(
                             child: CustomTextField(
                               controller: confirmPasswordController,
                               keyboardType: TextInputType.visiblePassword,
@@ -167,9 +188,9 @@ class RegisterScreen extends StatelessWidget {
                               isObscure: true,
                             ),
                           ),
-                          const SizedBox(height: 30)
-                        ],
-                      ),
+                        ),
+                        const SizedBox(height: 30)
+                      ],
                     ),
                   ),
                 ),
@@ -181,7 +202,11 @@ class RegisterScreen extends StatelessWidget {
                           text: 'Sign Up',
                           width: MediaQuery.of(context).size.width * 0.7,
                           func: () {
-                            formKey.currentState!.validate();
+                            form1Key.currentState!.validate();
+                            form2Key.currentState!.validate();
+                            form3Key.currentState!.validate();
+                            form4Key.currentState!.validate();
+                            form5Key.currentState!.validate();
                           },
                         ),
                         AccountWidget(
