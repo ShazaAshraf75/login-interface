@@ -83,7 +83,7 @@ class RegisterScreen extends StatelessWidget {
                                 }
                               },
                               obscure: false,
-                              isSelected: false,
+                              isObscure: false,
                             ),
                           ),
                           const SizedBox(height: 8),
@@ -106,7 +106,7 @@ class RegisterScreen extends StatelessWidget {
                                   }
                                 },
                                 obscure: false,
-                                isSelected: false,
+                                isObscure: false,
                               ),
                             ),
                           ),
@@ -127,7 +127,7 @@ class RegisterScreen extends StatelessWidget {
                                   }
                                 },
                                 obscure: false,
-                                isSelected: false,
+                                isObscure: false,
                               ),
                             ),
                           ),
@@ -146,7 +146,7 @@ class RegisterScreen extends StatelessWidget {
                                   return null;
                                 }
                               },
-                              isSelected: true,
+                              isObscure: true,
                             ),
                           ),
                           const SizedBox(height: 8),
@@ -164,7 +164,7 @@ class RegisterScreen extends StatelessWidget {
                                   return null;
                                 }
                               },
-                              isSelected: true,
+                              isObscure: true,
                             ),
                           ),
                           const SizedBox(height: 30)

@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     }
                                   },
                                   obscure: false,
-                                  isSelected: false,
+                                  isObscure: false,
                                 ),
                               ),
                             ),
@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       return null;
                                     }
                                   },
-                                  isSelected: true,
+                                  isObscure: true,
                                 ),
                               ),
                             ),

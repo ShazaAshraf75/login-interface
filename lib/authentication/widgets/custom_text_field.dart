@@ -12,7 +12,7 @@ class CustomTextField extends StatefulWidget {
   String suffixIcon;
   String? Function(String?)? func;
   bool obscure = false;
-  bool isSelected = false;
+  bool isObscure = false;
   CustomTextField({
     Key? key,
     required this.controller,
@@ -21,7 +21,7 @@ class CustomTextField extends StatefulWidget {
     required this.suffixIcon,
     required this.func,
     required this.obscure,
-    required this.isSelected,
+    required this.isObscure,
   }) : super(key: key);
 
   @override
@@ -32,42 +32,47 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.transparent,
-      child: TextFormField(
-        // autovalidateMode: AutovalidateMode.onUserInteraction,
-        validator: widget.func,
-        obscureText: widget.obscure,
-        controller: widget.controller,
-        keyboardType: widget.keyboardType,
-        decoration: InputDecoration(
-          hintStyle: TextStyle(
-              fontSize: 13, fontFamily: 'Montserrat', color: textColor),
-          hintText: widget.hintText,
-          suffixIcon: (widget.isSelected == false)
-              ? SvgPicture.asset(
-                  widget.suffixIcon,
-                  color: textColor,
-                  fit: BoxFit.scaleDown,
-                  height: 24,
-                  width: 24,
-                )
-              : IconButton(
-                  highlightColor: Colors.transparent,
-                  splashColor: Colors.transparent,
-                  onPressed: () {
-                    setState(() {
-                      widget.obscure = !widget.obscure;
-                    });
-                  },
-                  icon: SvgPicture.asset(
+        color: Colors.transparent,
+        child: TextFormField(
+          // autovalidateMode: AutovalidateMode.onUserInteraction,
+          validator: widget.func,
+          obscureText: widget.obscure,
+          controller: widget.controller,
+          keyboardType: widget.keyboardType,
+          decoration: InputDecoration(
+            hintStyle: TextStyle(
+                fontSize: 13, fontFamily: 'Montserrat', color: textColor),
+            hintText: widget.hintText,
+            suffixIcon: (widget.isObscure == false)
+                ? SvgPicture.asset(
                     widget.suffixIcon,
                     color: textColor,
                     fit: BoxFit.scaleDown,
                     height: 24,
                     width: 24,
-                  )),
-        ),
-      ),
-    );
+                  )
+                : IconButton(
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    onPressed: () {
+                      setState(() {
+                        widget.obscure = !widget.obscure;
+                      });
+                    },
+                    icon: (widget.obscure)
+                        ? SvgPicture.asset(
+                            widget.suffixIcon,
+                            color: textColor,
+                            fit: BoxFit.scaleDown,
+                            height: 24,
+                            width: 24,
+                          )
+                        : Icon(
+                            Icons.visibility_off,
+                            color: textColor,
+                          ),
+                  ),
+          ),
+        ));
   }
 }
