@@ -13,6 +13,7 @@ class CustomTextField extends StatefulWidget {
   String? Function(String?)? func;
   bool obscure = false;
   bool isObscure = false;
+  GlobalKey<FormState> formKey;
   CustomTextField({
     Key? key,
     required this.controller,
@@ -22,6 +23,7 @@ class CustomTextField extends StatefulWidget {
     required this.func,
     required this.obscure,
     required this.isObscure,
+    required this.formKey,
   }) : super(key: key);
 
   @override
@@ -29,52 +31,54 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  var formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
-    return Material(
-        color: Colors.transparent,
-        child: TextFormField(
-          // autovalidateMode: AutovalidateMode.disabled,
-          validator: widget.func,
-          obscureText: widget.obscure,
-          controller: widget.controller,
-          keyboardType: widget.keyboardType,
-          decoration: InputDecoration(
-            hintStyle: TextStyle(
-                fontSize: 13, fontFamily: 'Montserrat', color: textColor),
-            hintText: widget.hintText,
-            suffixIcon: (widget.isObscure == false)
-                ? SvgPicture.asset(
-                    widget.suffixIcon,
-                    color: textColor,
-                    fit: BoxFit.scaleDown,
-                    height: 24,
-                    width: 24,
-                  )
-                : IconButton(
-                    highlightColor: Colors.transparent,
-                    splashColor: Colors.transparent,
-                    onPressed: () {
-                      setState(() {
-                        widget.obscure = !widget.obscure;
-                      });
-                    },
-                    icon: (widget.obscure)
-                        ? SvgPicture.asset(
-                            widget.suffixIcon,
-                            color: textColor,
-                            fit: BoxFit.scaleDown,
-                            height: 24,
-                            width: 24,
-                          )
-                        : Icon(
-                            Icons.visibility_off,
-                            color: textColor,
-                          ),
-                  ),
-          ),
-        ));
+    return Form(
+      key: widget.formKey,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      child: Material(
+          color: Colors.transparent,
+          child: TextFormField(
+            // autovalidateMode: AutovalidateMode.disabled,
+            validator: widget.func,
+            obscureText: widget.obscure,
+            controller: widget.controller,
+            keyboardType: widget.keyboardType,
+            decoration: InputDecoration(
+              hintStyle: TextStyle(
+                  fontSize: 13, fontFamily: 'Montserrat', color: textColor),
+              hintText: widget.hintText,
+              suffixIcon: (widget.isObscure == false)
+                  ? SvgPicture.asset(
+                      widget.suffixIcon,
+                      color: textColor,
+                      fit: BoxFit.scaleDown,
+                      height: 24,
+                      width: 24,
+                    )
+                  : IconButton(
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      onPressed: () {
+                        setState(() {
+                          widget.obscure = !widget.obscure;
+                        });
+                      },
+                      icon: (widget.obscure)
+                          ? SvgPicture.asset(
+                              widget.suffixIcon,
+                              color: textColor,
+                              fit: BoxFit.scaleDown,
+                              height: 24,
+                              width: 24,
+                            )
+                          : Icon(
+                              Icons.visibility_off,
+                              color: textColor,
+                            ),
+                    ),
+            ),
+          )),
+    );
   }
 }

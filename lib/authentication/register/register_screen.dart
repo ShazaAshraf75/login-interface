@@ -71,122 +71,107 @@ class RegisterScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 30),
-                        Form(
-                          key: form1Key,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: Expanded(
+                        Expanded(
+                          child: CustomTextField(
+                            controller: usernameController,
+                            keyboardType: TextInputType.name,
+                            hintText: 'Username',
+                            suffixIcon: profile,
+                            obscure: false,
+                            isObscure: false,
+                            formKey: form1Key,
+                            func: (value) {
+                              if (value!.isEmpty) {
+                                return "Username must not be empty";
+                              } else {
+                                return null;
+                              }
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Expanded(
+                          child: Hero(
+                            tag: "key1",
                             child: CustomTextField(
-                              controller: usernameController,
-                              keyboardType: TextInputType.name,
-                              hintText: 'Username',
-                              suffixIcon: profile,
-                              func: (value) {
-                                if (value!.isEmpty) {
-                                  return "Username must not be empty";
-                                } else {
-                                  return null;
-                                }
-                              },
+                              controller: emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              hintText: 'Email Address',
+                              suffixIcon: email,
                               obscure: false,
                               isObscure: false,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Form(
-                          key: form2Key,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: Expanded(
-                            child: Hero(
-                              tag: "key1",
-                              child: CustomTextField(
-                                controller: emailController,
-                                keyboardType: TextInputType.emailAddress,
-                                hintText: 'Email Address',
-                                suffixIcon: email,
-                                func: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Email must not be empty";
-                                  } else if (!value.contains("@") &&
-                                      !value.contains(".")) {
-                                    return "Invalid Email Address";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                obscure: false,
-                                isObscure: false,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Form(
-                          key: form3Key,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: Expanded(
-                            child: Hero(
-                              tag: "key2",
-                              child: CustomTextField(
-                                controller: mobileController,
-                                keyboardType: TextInputType.phone,
-                                hintText: 'Mobile Number',
-                                suffixIcon: phone,
-                                func: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Mobile Number must not be empty";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                                obscure: false,
-                                isObscure: false,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Form(
-                          key: form4Key,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: Expanded(
-                            child: CustomTextField(
-                              controller: passwordController,
-                              keyboardType: TextInputType.visiblePassword,
-                              hintText: 'Password',
-                              obscure: true,
-                              suffixIcon: eye,
+                              formKey: form2Key,
                               func: (value) {
                                 if (value!.isEmpty) {
-                                  return "Password must not be empty";
+                                  return "Email must not be empty";
+                                } else if (!value.contains("@") &&
+                                    !value.contains(".")) {
+                                  return "Invalid Email Address";
                                 } else {
                                   return null;
                                 }
                               },
-                              isObscure: true,
                             ),
                           ),
                         ),
                         const SizedBox(height: 8),
-                        Form(
-                          key: form5Key,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: Expanded(
+                        Expanded(
+                          child: Hero(
+                            tag: "key2",
                             child: CustomTextField(
-                              controller: confirmPasswordController,
-                              keyboardType: TextInputType.visiblePassword,
-                              hintText: 'Confirm Password',
-                              obscure: true,
-                              suffixIcon: eye,
+                              controller: mobileController,
+                              keyboardType: TextInputType.phone,
+                              hintText: 'Mobile Number',
+                              suffixIcon: phone,
+                              obscure: false,
+                              isObscure: false,
+                              formKey: form3Key,
                               func: (value) {
                                 if (value!.isEmpty) {
-                                  return "Password must not be empty";
+                                  return "Mobile Number must not be empty";
                                 } else {
                                   return null;
                                 }
                               },
-                              isObscure: true,
                             ),
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Expanded(
+                          child: CustomTextField(
+                            controller: passwordController,
+                            keyboardType: TextInputType.visiblePassword,
+                            hintText: 'Password',
+                            obscure: true,
+                            suffixIcon: eye,
+                            isObscure: true,
+                            formKey: form4Key,
+                            func: (value) {
+                              if (value!.isEmpty) {
+                                return "Password must not be empty";
+                              } else {
+                                return null;
+                              }
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Expanded(
+                          child: CustomTextField(
+                            controller: confirmPasswordController,
+                            keyboardType: TextInputType.visiblePassword,
+                            hintText: 'Confirm Password',
+                            obscure: true,
+                            suffixIcon: eye,
+                            isObscure: true,
+                            formKey: form5Key,
+                            func: (value) {
+                              if (value!.isEmpty) {
+                                return "Password must not be empty";
+                              } else {
+                                return null;
+                              }
+                            },
                           ),
                         ),
                         const SizedBox(height: 30)

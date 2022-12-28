@@ -73,54 +73,46 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           const SizedBox(height: 30),
-                          Form(
-                            key: form1Key,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            child: Expanded(
-                              child: Hero(
-                                tag: "key1",
-                                child: CustomTextField(
-                                  controller: usernameController,
-                                  keyboardType: TextInputType.name,
-                                  hintText: 'Username',
-                                  suffixIcon: profile,
-                                  func: (value) {
-                                    if (value!.isEmpty) {
-                                      return "Username must not be empty";
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  obscure: false,
-                                  isObscure: false,
-                                ),
+                          Expanded(
+                            child: Hero(
+                              tag: "key1",
+                              child: CustomTextField(
+                                controller: usernameController,
+                                keyboardType: TextInputType.name,
+                                hintText: 'Username',
+                                suffixIcon: profile,
+                                obscure: false,
+                                isObscure: false,
+                                formKey: form1Key,
+                                func: (value) {
+                                  if (value!.isEmpty) {
+                                    return "Username must not be empty";
+                                  } else {
+                                    return null;
+                                  }
+                                },
                               ),
                             ),
                           ),
                           const SizedBox(height: 8),
-                          Form(
-                            key: form2Key,
-                            autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
-                            child: Expanded(
-                              child: Hero(
-                                tag: "key2",
-                                child: CustomTextField(
-                                  controller: passwordController,
-                                  keyboardType: TextInputType.visiblePassword,
-                                  hintText: 'Password',
-                                  obscure: true,
-                                  suffixIcon: eye,
-                                  func: (value) {
-                                    if (value!.isEmpty) {
-                                      return "Password must not be empty";
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  isObscure: true,
-                                ),
+                          Expanded(
+                            child: Hero(
+                              tag: "key2",
+                              child: CustomTextField(
+                                controller: passwordController,
+                                keyboardType: TextInputType.visiblePassword,
+                                hintText: 'Password',
+                                obscure: true,
+                                suffixIcon: eye,
+                                isObscure: true,
+                                formKey: form2Key,
+                                func: (value) {
+                                  if (value!.isEmpty) {
+                                    return "Password must not be empty";
+                                  } else {
+                                    return null;
+                                  }
+                                },
                               ),
                             ),
                           ),
