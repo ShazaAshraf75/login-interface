@@ -8,7 +8,8 @@ class DFMSwidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height * 0.30,
+      // height: MediaQuery.of(context).size.height * 0.30,
+      height: 250,
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(40),

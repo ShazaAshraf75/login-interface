@@ -26,154 +26,142 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 1,
-              width: MediaQuery.of(context).size.width * 1,
-              child: Stack(
-                alignment: AlignmentDirectional.topCenter,
-                // fit: StackFit.expand,
-                children: [
-                  const DFMSwidget(),
-                  Positioned(
-                    top: MediaQuery.of(context).size.height * 0.23,
-                    width: MediaQuery.of(context).size.width * 1,
-                    height: MediaQuery.of(context).size.height * 0.37,
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 35),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 32),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(24),
-                        boxShadow: const [
-                          BoxShadow(
-                            blurRadius: 24,
-                            spreadRadius: 0,
-                            blurStyle: BlurStyle.normal,
-                            color: Colors.black12,
-                          )
-                        ],
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "Login",
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontFamily: "MontserratS",
-                            ),
-                          ),
-                          const SizedBox(height: 30),
-                          Expanded(
-                            child: Hero(
-                              tag: "key1",
-                              child: CustomTextField(
-                                controller: usernameController,
-                                keyboardType: TextInputType.name,
-                                hintText: 'Username',
-                                suffixIcon: profile,
-                                obscure: false,
-                                isObscure: false,
-                                formKey: form1Key,
-                                func: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Username must not be empty";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 8),
-                          Expanded(
-                            child: Hero(
-                              tag: "key2",
-                              child: CustomTextField(
-                                controller: passwordController,
-                                keyboardType: TextInputType.visiblePassword,
-                                hintText: 'Password',
-                                obscure: true,
-                                suffixIcon: eye,
-                                isObscure: true,
-                                formKey: form2Key,
-                                func: (value) {
-                                  if (value!.isEmpty) {
-                                    return "Password must not be empty";
-                                  } else {
-                                    return null;
-                                  }
-                                },
-                              ),
-                            ),
-                          ),
-                          // const SizedBox(height: 10),
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Checkbox(
-                                  value: isSelected,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      isSelected = value!;
-                                    });
-                                  },
-                                  activeColor: darkPurpleColor,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5)),
-                                  side: BorderSide(
-                                    color: Color.fromRGBO(201, 201, 201, 1),
-                                  ),
-                                ),
-                                Text(
-                                  "Remember me",
-                                  style: TextStyle(
-                                      fontFamily: "Montserrat", fontSize: 13),
-                                ),
-                                SizedBox(height: 30)
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+        physics: AlwaysScrollableScrollPhysics(),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 1,
+          width: MediaQuery.of(context).size.width * 1,
+          child: Stack(
+            alignment: AlignmentDirectional.topCenter,
+            children: [
+              const DFMSwidget(),
+              Positioned(
+                // top: MediaQuery.of(context).size.height * 0.23,
+                top: 180,
+                width: MediaQuery.of(context).size.width * 1,
+                height: 360,
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 35),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 32),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(24),
+                    boxShadow: const [
+                      BoxShadow(
+                        blurRadius: 24,
+                        spreadRadius: 0,
+                        blurStyle: BlurStyle.normal,
+                        color: Colors.black12,
+                      )
+                    ],
                   ),
-                  Positioned(
-                      bottom: MediaQuery.of(context).size.height * 0.31,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        "Login",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontFamily: "MontserratS",
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      Hero(
+                        tag: "key1",
+                        child: CustomTextField(
+                          controller: usernameController,
+                          keyboardType: TextInputType.name,
+                          hintText: 'Username',
+                          suffixIcon: profile,
+                          obscure: false,
+                          isObscure: false,
+                          formKey: form1Key,
+                          func: (value) {
+                            if (value!.isEmpty) {
+                              return "Username must not be empty";
+                            } else {
+                              return null;
+                            }
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Hero(
+                        tag: "key2",
+                        child: CustomTextField(
+                          controller: passwordController,
+                          keyboardType: TextInputType.visiblePassword,
+                          hintText: 'Password',
+                          obscure: true,
+                          suffixIcon: eye,
+                          isObscure: true,
+                          formKey: form2Key,
+                          func: (value) {
+                            if (value!.isEmpty) {
+                              return "Password must not be empty";
+                            } else {
+                              return null;
+                            }
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          CustomButton(
-                            text: 'Login',
-                            width: MediaQuery.of(context).size.width * 0.7,
-                            func: () {
-                              form1Key.currentState!.validate();
-                              form2Key.currentState!.validate();
+                          Checkbox(
+                            value: isSelected,
+                            onChanged: (value) {
+                              setState(() {
+                                isSelected = value!;
+                              });
                             },
+                            activeColor: darkPurpleColor,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5)),
+                            side: BorderSide(
+                              color: Color.fromRGBO(201, 201, 201, 1),
+                            ),
                           ),
-                          AccountWidget(
-                              question: "Don't Have an Account?",
-                              answer: " Sign Up",
-                              func: () {
-                                Navigator.push(
-                                    context, animateToRoute(RegisterScreen()));
-                              }),
+                          Text(
+                            "Remember me",
+                            style: TextStyle(
+                                fontFamily: "Montserrat", fontSize: 13),
+                          ),
                         ],
-                      )),
-                ],
+                      )
+                    ],
+                  ),
+                ),
               ),
-            ),
-          ],
+              Positioned(
+                // top: MediaQuery.of(context).size.height * 0.59,
+                top: 520,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    CustomButton(
+                      text: 'Login',
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      func: () {
+                        form1Key.currentState!.validate();
+                        form2Key.currentState!.validate();
+                      },
+                    ),
+                    AccountWidget(
+                        question: "Don't Have an Account?",
+                        answer: " Sign Up",
+                        func: () {
+                          Navigator.push(
+                              context, animateToRoute(RegisterScreen()));
+                        }),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -39,12 +39,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child: Material(
           color: Colors.transparent,
           child: TextFormField(
-            // autovalidateMode: AutovalidateMode.disabled,
             validator: widget.func,
             obscureText: widget.obscure,
             controller: widget.controller,
             keyboardType: widget.keyboardType,
             decoration: InputDecoration(
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
               hintStyle: TextStyle(
                   fontSize: 13, fontFamily: 'Montserrat', color: textColor),
               hintText: widget.hintText,
