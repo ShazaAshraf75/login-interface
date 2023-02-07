@@ -1,13 +1,14 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:login_interface/authentication/login/login_screen.dart';
-import 'package:login_interface/authentication/widgets/account_widget.dart';
-import 'package:login_interface/authentication/widgets/custom_button.dart';
-import 'package:login_interface/authentication/widgets/custom_text_field.dart';
+
 import 'package:login_interface/components/components.dart';
 import 'package:login_interface/constants/constants.dart';
+import 'package:login_interface/modules/authentication/login/login_screen.dart';
+import 'package:login_interface/modules/authentication/widgets/account_widget.dart';
+import 'package:login_interface/modules/authentication/widgets/custom_text_field.dart';
 
+import '../widgets/custom_button.dart';
 import '../widgets/dfms_widget.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -26,7 +27,7 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-      physics: AlwaysScrollableScrollPhysics(),
+      physics: const AlwaysScrollableScrollPhysics(),
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 1,
         width: MediaQuery.of(context).size.width * 1,
@@ -69,7 +70,7 @@ class RegisterScreen extends StatelessWidget {
                         fontFamily: "MontserratS",
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     // const SizedBox(height: 30),
                     CustomTextField(
                       controller: usernameController,
@@ -165,7 +166,7 @@ class RegisterScreen extends StatelessWidget {
                       },
                     ),
                     // const SizedBox(height: 10),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
               ),
