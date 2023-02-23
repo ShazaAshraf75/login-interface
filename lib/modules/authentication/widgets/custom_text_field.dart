@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:login_interface/modules/authentication/login/bloc/login_events.dart';
 
 import 'package:login_interface/theme/colors.dart';
 
@@ -33,7 +34,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginStates>(
       builder: (context, state) {
-        var bloc = LoginBloc.get(context);
+        var bloc = BlocProvider.of<LoginBloc>(context);
         return Form(
           key: formKey,
           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -62,7 +63,7 @@ class CustomTextField extends StatelessWidget {
                           highlightColor: Colors.transparent,
                           splashColor: Colors.transparent,
                           onPressed: () {
-                            bloc.changePasswordVisibility();
+                            bloc.add(PasswordVisibilityChangedEvent());
                           },
                           icon: (bloc.obscure)
                               ? SvgPicture.asset(

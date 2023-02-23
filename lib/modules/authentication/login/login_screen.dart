@@ -11,10 +11,11 @@ import 'package:login_interface/modules/authentication/widgets/account_widget.da
 import 'package:login_interface/modules/authentication/widgets/custom_button.dart';
 import 'package:login_interface/modules/authentication/widgets/custom_text_field.dart';
 import 'package:login_interface/modules/authentication/widgets/dfms_widget.dart';
-import 'package:login_interface/modules/home/home_screen.dart';
 import 'package:login_interface/theme/colors.dart';
 
+import '../../home/home_screen.dart';
 import 'bloc/login_bloc.dart';
+import 'bloc/login_events.dart';
 
 class LoginScreen extends StatelessWidget {
   TextEditingController usernameController = TextEditingController();
@@ -54,7 +55,7 @@ class LoginScreen extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        var bloc = LoginBloc.get(context);
+        var bloc = BlocProvider.of<LoginBloc>(context);
         return Scaffold(
           body: SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(),
@@ -144,7 +145,8 @@ class LoginScreen extends StatelessWidget {
                               Checkbox(
                                 value: bloc.isSelected,
                                 onChanged: (value) {
-                                  bloc.changeCheckboxValue(value);
+                                  BlocProvider.of<LoginBloc>(context).add(
+                                      CheckboxValueChangedEvent(value: value));
                                 },
                                 activeColor: darkPurpleColor,
                                 shape: RoundedRectangleBorder(
@@ -177,9 +179,10 @@ class LoginScreen extends StatelessWidget {
                             func: () {
                               if (form1Key.currentState!.validate() &&
                                   form2Key.currentState!.validate()) {
-                                bloc.userLogin(
-                                    username: usernameController.text,
-                                    password: passwordController.text);
+                                BlocProvider.of<LoginBloc>(context).add(
+                                    UserLoggedInEvent(
+                                        username: usernameController.text,
+                                        password: passwordController.text));
                               }
                             },
                           )
