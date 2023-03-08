@@ -18,8 +18,6 @@ import 'bloc/login_events.dart';
 class LoginScreen extends StatelessWidget {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  var form1Key = GlobalKey<FormState>();
-  var form2Key = GlobalKey<FormState>();
 
   bool _isSelected = false;
   String? usernameErrorMsg;
@@ -180,13 +178,12 @@ class LoginScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         CustomButton(
-                          text: 'Login',
-                          width: MediaQuery.of(context).size.width * 0.7,
-                          onTap: () => BlocProvider.of<LoginBloc>(context).add(
-                              UserLoggedInEvent(
-                                  username: usernameController.text,
-                                  password: passwordController.text)),
-                        ),
+                            text: 'Login',
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            onTap: () => BlocProvider.of<LoginBloc>(context)
+                                .add(UserLoggedInEvent(
+                                    username: usernameController.text,
+                                    password: passwordController.text))),
                         if (state is LoginLoadingState)
                           Padding(
                             padding: const EdgeInsets.only(top: 20),
