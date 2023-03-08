@@ -1,87 +1,172 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:login_interface/modules/authentication/login/bloc/login_events.dart';
+import 'package:login_interface/constants/constants.dart';
 
-import 'package:login_interface/theme/colors.dart';
-
-import '../login/bloc/login_bloc.dart';
-import '../login/bloc/login_states.dart';
-
-class CustomTextField extends StatelessWidget {
+class CustomTextFormField extends StatefulWidget {
   TextEditingController controller;
   TextInputType keyboardType;
   String hintText;
   String suffixIcon;
-  String? Function(String?)? func;
+  String? Function(String?)? onTap;
   bool obscure = false;
   bool isObscure = false;
   GlobalKey<FormState> formKey;
+  CustomTextFormField({
+    Key? key,
+    required this.controller,
+    required this.keyboardType,
+    required this.hintText,
+    required this.suffixIcon,
+    required this.onTap,
+    required this.obscure,
+    required this.isObscure,
+    required this.formKey,
+  }) : super(key: key);
+
+  @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  @override
+  Widget build(BuildContext context) {
+    var svgPicture = SvgPicture.asset(
+      widget.suffixIcon,
+      colorFilter:
+          const ColorFilter.mode(ColorManager.textColor, BlendMode.dst),
+      fit: BoxFit.scaleDown,
+      height: 24,
+      width: 24,
+    );
+
+    return Form(
+      key: widget.formKey,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      child: Material(
+          color: Colors.transparent,
+          child: TextFormField(
+            validator: widget.onTap,
+            obscureText: widget.obscure,
+            controller: widget.controller,
+            keyboardType: widget.keyboardType,
+            decoration: InputDecoration(
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+              hintStyle: const TextStyle(
+                  fontSize: 13,
+                  fontFamily: 'Montserrat',
+                  color: ColorManager.textColor),
+              hintText: widget.hintText,
+              suffixIcon: (widget.isObscure == false)
+                  ? svgPicture
+                  : IconButton(
+                      highlightColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      onPressed: () {
+                        setState(() {
+                          widget.obscure = !widget.obscure;
+                        });
+                      },
+                      icon: (widget.obscure)
+                          ? SvgPicture.asset(
+                              widget.suffixIcon,
+                              colorFilter: const ColorFilter.mode(
+                                  ColorManager.textColor, BlendMode.dst),
+                              fit: BoxFit.scaleDown,
+                              height: 24,
+                              width: 24,
+                            )
+                          : const Icon(
+                              Icons.visibility_off,
+                              color: ColorManager.textColor,
+                            ),
+                    ),
+            ),
+          )),
+    );
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+class CustomTextField extends StatefulWidget {
+  TextEditingController controller;
+  TextInputType keyboardType;
+  String hintText;
+  String suffixIcon;
+  bool obscure = false;
+  bool isObscure = false;
+  String? errorText;
+  Function(String)? onChange;
   CustomTextField({
     Key? key,
     required this.controller,
     required this.keyboardType,
     required this.hintText,
     required this.suffixIcon,
-    required this.func,
     required this.obscure,
+    required this.onChange,
     required this.isObscure,
-    required this.formKey,
+    required this.errorText,
   }) : super(key: key);
+
+  @override
+  _CustomTextFieldState createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginStates>(
-      builder: (context, state) {
-        var bloc = BlocProvider.of<LoginBloc>(context);
-        return Form(
-          key: formKey,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          child: Material(
-              color: Colors.transparent,
-              child: TextFormField(
-                validator: func,
-                obscureText: obscure,
-                controller: controller,
-                keyboardType: keyboardType,
-                decoration: InputDecoration(
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-                  hintStyle: TextStyle(
-                      fontSize: 13, fontFamily: 'Montserrat', color: textColor),
-                  hintText: hintText,
-                  suffixIcon: (isObscure == false)
-                      ? SvgPicture.asset(
-                          suffixIcon,
-                          color: textColor,
-                          fit: BoxFit.scaleDown,
-                          height: 24,
-                          width: 24,
-                        )
-                      : IconButton(
-                          highlightColor: Colors.transparent,
-                          splashColor: Colors.transparent,
-                          onPressed: () {
-                            bloc.add(PasswordVisibilityChangedEvent());
-                          },
-                          icon: (bloc.obscure)
-                              ? SvgPicture.asset(
-                                  suffixIcon,
-                                  color: textColor,
-                                  fit: BoxFit.scaleDown,
-                                  height: 24,
-                                  width: 24,
-                                )
-                              : Icon(
-                                  Icons.visibility_off,
-                                  color: textColor,
-                                ),
-                        ),
-                ),
-              )),
-        );
-      },
+    var svgPicture = SvgPicture.asset(
+      widget.suffixIcon,
+      colorFilter:
+          const ColorFilter.mode(ColorManager.textColor, BlendMode.dst),
+      fit: BoxFit.scaleDown,
+      height: 24,
+      width: 24,
     );
+    return Material(
+        color: Colors.transparent,
+        child: TextField(
+          onChanged: widget.onChange,
+          obscureText: widget.obscure,
+          controller: widget.controller,
+          keyboardType: widget.keyboardType,
+          decoration: InputDecoration(
+            errorText: widget.errorText,
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+            hintStyle: const TextStyle(
+                fontSize: 13,
+                fontFamily: 'Montserrat',
+                color: ColorManager.textColor),
+            hintText: widget.hintText,
+            suffixIcon: (widget.isObscure == false)
+                ? svgPicture
+                : IconButton(
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    onPressed: () {
+                      setState(() {
+                        widget.obscure = !widget.obscure;
+                      });
+                    },
+                    icon: (widget.obscure)
+                        ? SvgPicture.asset(
+                            widget.suffixIcon,
+                            colorFilter: const ColorFilter.mode(
+                                ColorManager.textColor, BlendMode.dst),
+                            fit: BoxFit.scaleDown,
+                            height: 24,
+                            width: 24,
+                          )
+                        : const Icon(
+                            Icons.visibility_off,
+                            color: ColorManager.textColor,
+                          ),
+                  ),
+          ),
+        ));
   }
 }

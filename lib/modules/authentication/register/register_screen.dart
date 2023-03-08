@@ -72,15 +72,15 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     const Spacer(),
                     // const SizedBox(height: 30),
-                    CustomTextField(
+                    CustomTextFormField(
                       controller: usernameController,
                       keyboardType: TextInputType.name,
                       hintText: 'Username',
-                      suffixIcon: profile,
+                      suffixIcon: ImagePaths.profile,
                       obscure: false,
                       isObscure: false,
                       formKey: form1Key,
-                      func: (value) {
+                      onTap: (value) {
                         if (value!.isEmpty) {
                           return "Username must not be empty";
                         } else {
@@ -91,15 +91,15 @@ class RegisterScreen extends StatelessWidget {
                     const SizedBox(height: 20),
                     Hero(
                       tag: "key1",
-                      child: CustomTextField(
+                      child: CustomTextFormField(
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         hintText: 'Email Address',
-                        suffixIcon: email,
+                        suffixIcon: ImagePaths.email,
                         obscure: false,
                         isObscure: false,
                         formKey: form2Key,
-                        func: (value) {
+                        onTap: (value) {
                           if (value!.isEmpty) {
                             return "Email must not be empty";
                           } else if (!value.contains("@") &&
@@ -114,15 +114,15 @@ class RegisterScreen extends StatelessWidget {
                     const SizedBox(height: 20),
                     Hero(
                       tag: "key2",
-                      child: CustomTextField(
+                      child: CustomTextFormField(
                         controller: mobileController,
                         keyboardType: TextInputType.phone,
                         hintText: 'Mobile Number',
-                        suffixIcon: phone,
+                        suffixIcon: ImagePaths.phone,
                         obscure: false,
                         isObscure: false,
                         formKey: form3Key,
-                        func: (value) {
+                        onTap: (value) {
                           if (value!.isEmpty) {
                             return "Mobile Number must not be empty";
                           } else {
@@ -132,15 +132,15 @@ class RegisterScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    CustomTextField(
+                    CustomTextFormField(
                       controller: passwordController,
                       keyboardType: TextInputType.visiblePassword,
                       hintText: 'Password',
                       obscure: true,
-                      suffixIcon: eye,
+                      suffixIcon: ImagePaths.eye,
                       isObscure: true,
                       formKey: form4Key,
-                      func: (value) {
+                      onTap: (value) {
                         if (value!.isEmpty) {
                           return "Password must not be empty";
                         } else {
@@ -149,15 +149,15 @@ class RegisterScreen extends StatelessWidget {
                       },
                     ),
                     const SizedBox(height: 20),
-                    CustomTextField(
+                    CustomTextFormField(
                       controller: confirmPasswordController,
                       keyboardType: TextInputType.visiblePassword,
                       hintText: 'Confirm Password',
                       obscure: true,
-                      suffixIcon: eye,
+                      suffixIcon: ImagePaths.eye,
                       isObscure: true,
                       formKey: form5Key,
-                      func: (value) {
+                      onTap: (value) {
                         if (value!.isEmpty) {
                           return "Password must not be empty";
                         } else {
@@ -180,7 +180,7 @@ class RegisterScreen extends StatelessWidget {
                   CustomButton(
                     text: 'Sign Up',
                     width: MediaQuery.of(context).size.width * 0.7,
-                    func: () {
+                    onTap: () {
                       form1Key.currentState!.validate();
                       form2Key.currentState!.validate();
                       form3Key.currentState!.validate();
@@ -191,7 +191,7 @@ class RegisterScreen extends StatelessWidget {
                   AccountWidget(
                       question: "Already Have an Account?",
                       answer: "Login",
-                      func: () {
+                      onTap: () {
                         Navigator.push(context, animateToRoute(LoginScreen()));
                       }),
                 ],

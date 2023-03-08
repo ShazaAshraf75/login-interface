@@ -3,15 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:login_interface/components/components.dart';
 import 'package:login_interface/constants/constants.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_states.dart';
-import 'package:login_interface/modules/authentication/register/register_screen.dart';
 import 'package:login_interface/modules/authentication/widgets/account_widget.dart';
+import 'package:login_interface/modules/authentication/widgets/custom_alert_dialog.dart';
 import 'package:login_interface/modules/authentication/widgets/custom_button.dart';
 import 'package:login_interface/modules/authentication/widgets/custom_text_field.dart';
 import 'package:login_interface/modules/authentication/widgets/dfms_widget.dart';
-import 'package:login_interface/theme/colors.dart';
 
 import '../../home/home_screen.dart';
 import 'bloc/login_bloc.dart';
@@ -23,11 +21,27 @@ class LoginScreen extends StatelessWidget {
   var form1Key = GlobalKey<FormState>();
   var form2Key = GlobalKey<FormState>();
 
-  bool isSelected = false;
+  bool _isSelected = false;
+  String? usernameErrorMsg;
+  String? passwordErrorMsg;
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginBloc, LoginStates>(
       listener: (context, state) {
+        if (state is UsernameIsEmptyState) {
+          usernameErrorMsg = "Username must not be empty";
+        } else {
+          usernameErrorMsg = null;
+        }
+        if (state is PasswordIsEmptyState) {
+          passwordErrorMsg = "Password must not be empty";
+        } else {
+          passwordErrorMsg = null;
+        }
+        if (state is ChangeCheckboxState) {
+          _isSelected = state.isSelected;
+        }
         if (state is LoginSuccessState) {
           if (state.loginModel.resultCode == 1) {
             Fluttertoast.showToast(
@@ -55,7 +69,6 @@ class LoginScreen extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        var bloc = BlocProvider.of<LoginBloc>(context);
         return Scaffold(
           body: SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(),
@@ -105,16 +118,13 @@ class LoginScreen extends StatelessWidget {
                               controller: usernameController,
                               keyboardType: TextInputType.name,
                               hintText: 'Username',
-                              suffixIcon: profile,
-                              obscure: false,
+                              suffixIcon: ImagePaths.profile,
                               isObscure: false,
-                              formKey: form1Key,
-                              func: (value) {
-                                if (value!.isEmpty) {
-                                  return "Username must not be empty";
-                                } else {
-                                  return null;
-                                }
+                              obscure: false,
+                              errorText: usernameErrorMsg,
+                              onChange: (value) {
+                                BlocProvider.of<LoginBloc>(context).add(
+                                    UsernameValidatedEvent(username: value));
                               },
                             ),
                           ),
@@ -125,16 +135,13 @@ class LoginScreen extends StatelessWidget {
                               controller: passwordController,
                               keyboardType: TextInputType.visiblePassword,
                               hintText: 'Password',
-                              obscure: bloc.obscure,
-                              suffixIcon: eye,
+                              suffixIcon: ImagePaths.eye,
                               isObscure: true,
-                              formKey: form2Key,
-                              func: (value) {
-                                if (value!.isEmpty) {
-                                  return "Password must not be empty";
-                                } else {
-                                  return null;
-                                }
+                              obscure: true,
+                              errorText: passwordErrorMsg,
+                              onChange: (value) {
+                                BlocProvider.of<LoginBloc>(context).add(
+                                    PasswordValidatedEvent(password: value));
                               },
                             ),
                           ),
@@ -143,12 +150,12 @@ class LoginScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Checkbox(
-                                value: bloc.isSelected,
+                                value: _isSelected,
                                 onChanged: (value) {
                                   BlocProvider.of<LoginBloc>(context).add(
-                                      CheckboxValueChangedEvent(value: value));
+                                      CheckboxValueChangedEvent(value: value!));
                                 },
-                                activeColor: darkPurpleColor,
+                                activeColor: ColorManager.darkPurpleColor,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(5)),
                                 side: BorderSide(
@@ -172,30 +179,36 @@ class LoginScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        if (state is! LoginLoadingState)
-                          CustomButton(
-                            text: 'Login',
-                            width: MediaQuery.of(context).size.width * 0.7,
-                            func: () {
-                              if (form1Key.currentState!.validate() &&
-                                  form2Key.currentState!.validate()) {
-                                BlocProvider.of<LoginBloc>(context).add(
-                                    UserLoggedInEvent(
-                                        username: usernameController.text,
-                                        password: passwordController.text));
-                              }
-                            },
-                          )
-                        else
-                          Center(
-                              child: CircularProgressIndicator(
-                                  color: darkPurpleColor)),
+                        CustomButton(
+                          text: 'Login',
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          onTap: () => BlocProvider.of<LoginBloc>(context).add(
+                              UserLoggedInEvent(
+                                  username: usernameController.text,
+                                  password: passwordController.text)),
+                        ),
+                        if (state is LoginLoadingState)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 20),
+                            child: SizedBox(
+                              height: 5,
+                              width: MediaQuery.of(context).size.width * 0.66,
+                              child: LinearProgressIndicator(
+                                  backgroundColor: Colors.grey[300],
+                                  color: ColorManager.darkPurpleColor),
+                            ),
+                          ),
                         AccountWidget(
                             question: "Don't Have an Account?",
                             answer: " Sign Up",
-                            func: () {
-                              Navigator.push(
-                                  context, animateToRoute(RegisterScreen()));
+                            onTap: () {
+                              // Navigator.push(
+                              //     context, animateToRoute(RegisterScreen()));
+                              showDialog(
+                                context: context,
+                                builder: (_) => const CustomAlertDialog(),
+                                barrierDismissible: false,
+                              );
                             }),
                       ],
                     ),

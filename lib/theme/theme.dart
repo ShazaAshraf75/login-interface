@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:login_interface/theme/colors.dart';
+import 'package:login_interface/constants/constants.dart';
 
 ThemeData defaultTheme = ThemeData(
     inputDecorationTheme: InputDecorationTheme(
   filled: true,
-  fillColor: lightGreyColor,
+  fillColor: ColorManager.lightGreyColor,
   errorBorder: OutlineInputBorder(
     
     
@@ -12,10 +12,10 @@ ThemeData defaultTheme = ThemeData(
       borderSide: const BorderSide(color: Colors.red)),
   focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(color: lightGreyColor)),
+      borderSide: const BorderSide(color: ColorManager.lightGreyColor)),
   enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide(color: lightGreyColor)),
+      borderSide: const BorderSide(color: ColorManager.lightGreyColor)),
   border: InputBorder.none,
   focusedErrorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),

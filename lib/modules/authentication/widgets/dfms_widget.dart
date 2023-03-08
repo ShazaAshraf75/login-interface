@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login_interface/theme/colors.dart';
+import 'package:login_interface/constants/constants.dart';
 
 class DFMSwidget extends StatelessWidget {
   const DFMSwidget({super.key});
@@ -10,16 +10,16 @@ class DFMSwidget extends StatelessWidget {
       width: double.infinity,
       // height: MediaQuery.of(context).size.height * 0.30,
       height: 250,
-      decoration: BoxDecoration(
-          borderRadius: const BorderRadius.only(
+      decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(40),
               bottomRight: Radius.circular(40)),
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomLeft,
             colors: [
-              darkPurpleColor,
-              redColor,
+              ColorManager.darkPurpleColor,
+              ColorManager.redColor,
             ],
           )),
       child: const Center(

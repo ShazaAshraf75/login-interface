@@ -7,11 +7,21 @@ class UserLoggedInEvent extends LoginEvents {
   UserLoggedInEvent({required this.username, required this.password});
 }
 
-class PasswordVisibilityChangedEvent extends LoginEvents {}
-
 class CheckboxValueChangedEvent extends LoginEvents {
-  final dynamic value;
+  final bool value;
   CheckboxValueChangedEvent({
     required this.value,
   });
+}
+
+class UsernameValidatedEvent extends LoginEvents {
+  final String username;
+
+  UsernameValidatedEvent({required this.username});
+}
+
+class PasswordValidatedEvent extends LoginEvents {
+  final String password;
+
+  PasswordValidatedEvent({required this.password});
 }
