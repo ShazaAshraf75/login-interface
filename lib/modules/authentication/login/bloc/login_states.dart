@@ -18,6 +18,16 @@ class LoginErrorState extends LoginStates {
   LoginErrorState(this.error);
 }
 
-class ChangePasswordVisibilityState extends LoginStates {}
+class ChangeCheckboxState extends LoginStates {
+  final bool isSelected;
 
-class ChangeCheckboxState extends LoginStates {}
+  ChangeCheckboxState({required this.isSelected});
+}
+
+class UsernameIsEmptyState extends LoginStates {}
+
+class UsernameIsNotEmptyState extends LoginStates {}
+
+class PasswordIsEmptyState extends LoginStates {}
+
+class PasswordIsNotEmptyState extends LoginStates {}

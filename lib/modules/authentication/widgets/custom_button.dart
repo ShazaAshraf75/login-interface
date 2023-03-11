@@ -1,14 +1,14 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:login_interface/theme/colors.dart';
+import 'package:login_interface/theme/color_manager.dart';
 
 class CustomButton extends StatelessWidget {
   String text;
   double width;
-  void Function()? func;
+  void Function()? onTap;
   CustomButton(
-      {Key? key, required this.text, required this.width, required this.func})
+      {Key? key, required this.text, required this.width, required this.onTap})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -16,9 +16,9 @@ class CustomButton extends StatelessWidget {
       height: 44,
       width: width,
       child: ElevatedButton(
-          onPressed: func,
+          onPressed: onTap,
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(darkPurpleColor),
+            backgroundColor: MaterialStateProperty.all(ColorManager.darkPurpleColor),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12.0),

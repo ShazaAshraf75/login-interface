@@ -22,6 +22,6 @@ class DioHelper {
 
   static Future<Response> postData(
       {required String url, required Map<String, dynamic> data}) async {
-    return dio.post(url, data: data);
+    return await dio.post(url, data: data);
   }
 }
