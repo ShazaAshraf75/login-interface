@@ -1,7 +1,8 @@
 // ignore: use_key_in_widget_constructors
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:login_interface/constants/constants.dart';
+import 'package:login_interface/theme/color_manager.dart';
+import 'package:login_interface/utils/resources/image_paths.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   const CustomAlertDialog({super.key});

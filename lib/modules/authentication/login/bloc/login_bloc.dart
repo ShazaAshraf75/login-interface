@@ -1,12 +1,10 @@
 // ignore_for_file: avoid_print
 
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:login_interface/constants/constants.dart';
 import 'package:login_interface/models/login_model.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_events.dart';
-import 'package:login_interface/modules/authentication/widgets/custom_alert_dialog.dart';
 import 'package:login_interface/network/dio_helper.dart';
+import 'package:login_interface/remote/end_points.dart';
 
 import 'login_states.dart';
 
@@ -19,7 +17,7 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
   }
 
   late LoginModel loginModel;
-  Future _onUserLoggedInEvent(
+  Future<void> _onUserLoggedInEvent(
       UserLoggedInEvent event, Emitter<LoginStates> emit) async {
     if (event.username.isEmpty) {
       emit(UsernameIsEmptyState());
@@ -38,13 +36,7 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
       }).then((value) {
         loginModel = LoginModel.fromJson(value.data);
         emit(LoginSuccessState(loginModel: loginModel));
-      }).catchError((error, context) {
-        print(error.toString());
-        showDialog(
-          context: context,
-          builder: (_) => const CustomAlertDialog(),
-          barrierDismissible: false,
-        );
+      }).catchError((error) {
         emit(LoginErrorState(error.toString()));
       });
     }

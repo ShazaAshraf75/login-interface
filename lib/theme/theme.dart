@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:login_interface/constants/constants.dart';
+import 'package:login_interface/theme/color_manager.dart';
 
 ThemeData defaultTheme = ThemeData(
     inputDecorationTheme: InputDecorationTheme(

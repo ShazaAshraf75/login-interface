@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:login_interface/constants/constants.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_states.dart';
 import 'package:login_interface/modules/authentication/widgets/account_widget.dart';
 import 'package:login_interface/modules/authentication/widgets/custom_alert_dialog.dart';
 import 'package:login_interface/modules/authentication/widgets/custom_button.dart';
 import 'package:login_interface/modules/authentication/widgets/custom_text_field.dart';
 import 'package:login_interface/modules/authentication/widgets/dfms_widget.dart';
-
+import 'package:login_interface/theme/color_manager.dart';
+import 'package:login_interface/utils/resources/image_paths.dart';
 import '../../home/home_screen.dart';
 import 'bloc/login_bloc.dart';
 import 'bloc/login_events.dart';
@@ -20,13 +20,20 @@ class LoginScreen extends StatelessWidget {
   TextEditingController passwordController = TextEditingController();
 
   bool _isSelected = false;
-  String? usernameErrorMsg;
-  String? passwordErrorMsg;
+  String? usernameErrorMsg, passwordErrorMsg;
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginBloc, LoginStates>(
       listener: (context, state) {
+        if (state is LoginErrorState) {
+          print(state.error);
+          showDialog(
+            context: context,
+            builder: (_) => const CustomAlertDialog(),
+            barrierDismissible: false,
+          );
+        }
         if (state is UsernameIsEmptyState) {
           usernameErrorMsg = "Username must not be empty";
         } else {

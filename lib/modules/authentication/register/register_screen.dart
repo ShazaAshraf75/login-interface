@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:login_interface/components/components.dart';
-import 'package:login_interface/constants/constants.dart';
 import 'package:login_interface/modules/authentication/login/login_screen.dart';
 import 'package:login_interface/modules/authentication/widgets/account_widget.dart';
 import 'package:login_interface/modules/authentication/widgets/custom_text_field.dart';
+import 'package:login_interface/utils/resources/image_paths.dart';
 
 import '../widgets/custom_button.dart';
 import '../widgets/dfms_widget.dart';

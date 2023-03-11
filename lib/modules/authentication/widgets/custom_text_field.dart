@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:login_interface/constants/constants.dart';
+import 'package:login_interface/theme/color_manager.dart';
 
 class CustomTextFormField extends StatefulWidget {
   TextEditingController controller;
