@@ -26,51 +26,48 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<LoginBloc, LoginStates>(
       listener: (context, state) {
-        if (state is LoginErrorState) {
-          print(state.error);
+        if (state is UsernameIsEmptyState) {
+          usernameErrorMsg = "Username must not be empty";
+        } else if (state is UsernameIsNotEmptyState) {
+          usernameErrorMsg = null;
+        }
+        if (state is PasswordIsEmptyState) {
+          passwordErrorMsg = "Password must not be empty";
+        } else if (state is PasswordIsNotEmptyState) {
+          passwordErrorMsg = null;
+        } else if (state is LoginFormIsEmptyState) {
+          usernameErrorMsg = "Username must not be empty";
+          passwordErrorMsg = "Password must not be empty";
+        } else if (state is ChangeCheckboxState) {
+          _isSelected = state.isSelected;
+        } else if (state is LoginErrorState) {
           showDialog(
             context: context,
             builder: (_) => const CustomAlertDialog(),
             barrierDismissible: false,
           );
-        }
-        if (state is UsernameIsEmptyState) {
-          usernameErrorMsg = "Username must not be empty";
-        } else {
-          usernameErrorMsg = null;
-        }
-        if (state is PasswordIsEmptyState) {
-          passwordErrorMsg = "Password must not be empty";
-        } else {
-          passwordErrorMsg = null;
-        }
-        if (state is ChangeCheckboxState) {
-          _isSelected = state.isSelected;
-        }
-        if (state is LoginSuccessState) {
-          if (state.loginModel.resultCode == 1) {
-            Fluttertoast.showToast(
-                msg: state.loginModel.resultMessageEn.toString(),
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-                timeInSecForIosWeb: 3,
-                backgroundColor: Colors.green,
-                textColor: Colors.white,
-                fontSize: 14.0);
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => HomeScreen(state.loginModel.data)));
-          } else {
-            Fluttertoast.showToast(
-                msg: state.loginModel.resultMessageEn.toString(),
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-                timeInSecForIosWeb: 3,
-                backgroundColor: Colors.red,
-                textColor: Colors.white,
-                fontSize: 14.0);
-          }
+        } else if (state is ValidToastState) {
+          Fluttertoast.showToast(
+              msg: state.loginModel.resultMessageEn.toString(),
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 3,
+              backgroundColor: Colors.green,
+              textColor: Colors.white,
+              fontSize: 14.0);
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => HomeScreen(state.loginModel.data)));
+        } else if (state is InvalidToastState) {
+          Fluttertoast.showToast(
+              msg: state.loginModel.resultMessageEn.toString(),
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              timeInSecForIosWeb: 3,
+              backgroundColor: Colors.red,
+              textColor: Colors.white,
+              fontSize: 14.0);
         }
       },
       builder: (context, state) {
@@ -208,11 +205,6 @@ class LoginScreen extends StatelessWidget {
                             onTap: () {
                               // Navigator.push(
                               //     context, animateToRoute(RegisterScreen()));
-                              showDialog(
-                                context: context,
-                                builder: (_) => const CustomAlertDialog(),
-                                barrierDismissible: false,
-                              );
                             }),
                       ],
                     ),

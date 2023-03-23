@@ -19,7 +19,9 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
   late LoginModel loginModel;
   Future<void> _onUserLoggedInEvent(
       UserLoggedInEvent event, Emitter<LoginStates> emit) async {
-    if (event.username.isEmpty) {
+    if (event.username.isEmpty && event.password.isEmpty) {
+      emit(LoginFormIsEmptyState());
+    } else if (event.username.isEmpty) {
       emit(UsernameIsEmptyState());
     } else if (event.password.isEmpty) {
       emit(PasswordIsEmptyState());
@@ -36,6 +38,13 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
       }).then((value) {
         loginModel = LoginModel.fromJson(value.data);
         emit(LoginSuccessState(loginModel: loginModel));
+        if (state is LoginSuccessState) {
+          if (loginModel.resultCode == 1) {
+            emit(ValidToastState(loginModel: loginModel));
+          } else {
+            emit(InvalidToastState(loginModel: loginModel));
+          }
+        }
       }).catchError((error) {
         emit(LoginErrorState(error.toString()));
       });

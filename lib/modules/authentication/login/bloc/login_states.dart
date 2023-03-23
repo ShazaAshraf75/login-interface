@@ -31,3 +31,19 @@ class UsernameIsNotEmptyState extends LoginStates {}
 class PasswordIsEmptyState extends LoginStates {}
 
 class PasswordIsNotEmptyState extends LoginStates {}
+
+class LoginFormIsEmptyState extends LoginStates {}
+
+class ValidToastState extends LoginStates {
+  LoginModel loginModel;
+  ValidToastState({
+    required this.loginModel,
+  });
+}
+
+class InvalidToastState extends LoginStates {
+  LoginModel loginModel;
+  InvalidToastState({
+    required this.loginModel,
+  });
+}
