@@ -6,8 +6,6 @@ ThemeData defaultTheme = ThemeData(
   filled: true,
   fillColor: ColorManager.lightGreyColor,
   errorBorder: OutlineInputBorder(
-    
-    
       borderRadius: BorderRadius.circular(12),
       borderSide: const BorderSide(color: Colors.red)),
   focusedBorder: OutlineInputBorder(

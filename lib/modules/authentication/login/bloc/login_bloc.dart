@@ -1,10 +1,10 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:login_interface/data/data_source/remote/end_points.dart';
 import 'package:login_interface/models/login_model.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_events.dart';
 import 'package:login_interface/network/dio_helper.dart';
-import 'package:login_interface/remote/end_points.dart';
 
 import 'login_states.dart';
 
