@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:login_interface/models/login_model.dart';
-import 'package:login_interface/theme/colors.dart';
+import 'package:login_interface/theme/color_manager.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen(this.data, {super.key});
@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: darkPurpleColor,
+          backgroundColor: ColorManager.darkPurpleColor,
           elevation: 0,
         ),
         body: Center(

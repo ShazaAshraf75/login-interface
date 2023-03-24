@@ -1,17 +1,17 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:login_interface/theme/colors.dart';
+import 'package:login_interface/theme/color_manager.dart';
 
 class AccountWidget extends StatelessWidget {
   String question;
   String answer;
-  void Function()? func;
+  void Function()? onTap;
   AccountWidget({
     Key? key,
     required this.question,
     required this.answer,
-    this.func,
+    this.onTap,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -26,15 +26,15 @@ class AccountWidget extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: func,
+          onPressed: onTap,
           style: ButtonStyle(
             padding: MaterialStateProperty.all(EdgeInsets.zero),
             minimumSize: MaterialStateProperty.all(const Size(0, 0)),
           ),
           child: Text(
             answer,
-            style: TextStyle(
-                fontFamily: "Montserrat", fontSize: 13, color: redColor),
+            style: const TextStyle(
+                fontFamily: "Montserrat", fontSize: 13, color: ColorManager.redColor),
           ),
         )
       ],
