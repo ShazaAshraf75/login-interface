@@ -13,6 +13,8 @@ class LoginScreen extends StatelessWidget {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool isSelected = false;
+  bool flag = false;
+
   String? usernameErrorMsg, passwordErrorMsg;
 
   @override
@@ -61,15 +63,21 @@ class LoginScreen extends StatelessWidget {
               backgroundColor: Colors.red,
               textColor: Colors.white,
               fontSize: 14.0);
+        } else if (state is LoginLoadingState) {
+          flag = true;
+        } else if (state is! LoginLoadingState) {
+          flag = false;
         }
       },
       builder: (context, state) {
         return LoginScreenContent(
-            isSelected: isSelected,
-            passwordErrorMsg: passwordErrorMsg,
-            usernameErrorMsg: usernameErrorMsg,
-            usernameController: usernameController,
-            passwordController: passwordController);
+          isSelected: isSelected,
+          flag: flag,
+          passwordErrorMsg: passwordErrorMsg,
+          usernameErrorMsg: usernameErrorMsg,
+          usernameController: usernameController,
+          passwordController: passwordController,
+        );
       },
     );
   }
