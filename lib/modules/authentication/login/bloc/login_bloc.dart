@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:login_interface/data/data_source/remote/end_points.dart';
+import 'package:login_interface/data/data_source/remote/api_key.dart';
 import 'package:login_interface/models/login_model.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_events.dart';
 import 'package:login_interface/network/dio_helper.dart';
@@ -27,7 +27,7 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
       emit(PasswordIsEmptyState());
     } else {
       emit(LoginLoadingState());
-      await DioHelper.postData(url: EndPoints.login, data: {
+      await DioHelper.postData(url: ApiKey.login, data: {
         "userid": 0,
         "ipaddress": "FUH0216913004222",
         "devicetoken": "testtokens",

@@ -1,3 +1,7 @@
+// ignore_for_file: unnecessary_question_mark
+
+import 'package:json_annotation/json_annotation.dart';
+
 class LoginModel {
   int? resultCode;
   String? resultMessageEn;
