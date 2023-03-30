@@ -18,7 +18,7 @@ class AuthenticationResponseModel {
     this.resultCode,
     this.resultMessageEn,
     this.resultMessageAr,
-    this.userDataResponse,
+    this.userDataResponseModel,
   });
 
   factory AuthenticationResponseModel.fromJson(Map<String, dynamic> json) =>

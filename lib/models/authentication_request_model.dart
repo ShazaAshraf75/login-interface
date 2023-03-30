@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:login_interface/models/user_data_request_model.dart';
 
 part 'authentication_request_model.g.dart';
 
@@ -20,13 +21,13 @@ class AuthenticationRequestModel {
   final UserDataRequestModel? userDataRequestModel;
 
   AuthenticationRequestModel({
-    this.userId,
-    this.ipAddress,
-    this.deviceToken,
-    this.osversion,
-    this.appVersion,
-    this.deviceType,
-    this.userDataRequest,
+   required this.userId,
+   required this.ipAddress,
+    required this.deviceToken,
+    required this.osversion,
+    required this.appVersion,
+    required this.deviceType,
+    required this.userDataRequestModel,
   });
 
   factory AuthenticationRequestModel.fromJson(Map<String, dynamic> json) =>

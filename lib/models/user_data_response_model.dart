@@ -1,4 +1,6 @@
 
+// ignore_for_file: unnecessary_question_mark
+
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_data_response_model.g.dart';

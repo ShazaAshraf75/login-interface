@@ -18,5 +18,5 @@ abstract class AuthenticationApiService {
 
   @POST(ApiKey.login)
   Future<AuthenticationResponseModel> loginApi(
-      @Body() AuthenticationRequestModel? respone);
+      @Body() AuthenticationRequestModel? request);
 }

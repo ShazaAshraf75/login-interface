@@ -10,8 +10,8 @@ class UserDataRequestModel {
   final String? password;
 
   UserDataRequestModel({
-    this.userName,
-    this.password,
+    required this.userName,
+    required this.password,
   });
 
   factory UserDataRequestModel.fromJson(Map<String, dynamic> json) =>
