@@ -1,4 +1,4 @@
-import 'package:login_interface/models/login_model.dart';
+import 'package:login_interface/models/authentication_response_model.dart';
 
 abstract class LoginStates {}
 
@@ -6,16 +6,21 @@ class LoginInitialState extends LoginStates {}
 
 class LoginLoadingState extends LoginStates {}
 
-class LoginSuccessState extends LoginStates {
-  late LoginModel loginModel;
-  LoginSuccessState({
-    required this.loginModel,
+class LoginApiSuccessState extends LoginStates {
+  final AuthenticationResponseModel responseModel;
+  LoginApiSuccessState({
+    required this.responseModel,
   });
 }
 
-class LoginErrorState extends LoginStates {
+class LoginApiFailState extends LoginStates {
+  final String message;
+  LoginApiFailState(this.message);
+}
+
+class LoginNetworkFailState extends LoginStates {
   final String error;
-  LoginErrorState(this.error);
+  LoginNetworkFailState(this.error);
 }
 
 class ChangeCheckboxState extends LoginStates {
@@ -35,15 +40,15 @@ class PasswordIsNotEmptyState extends LoginStates {}
 class LoginFormIsEmptyState extends LoginStates {}
 
 class ValidToastState extends LoginStates {
-  LoginModel loginModel;
+  final AuthenticationResponseModel responseModel;
   ValidToastState({
-    required this.loginModel,
+    required this.responseModel,
   });
 }
 
 class InvalidToastState extends LoginStates {
-  LoginModel loginModel;
+  final AuthenticationResponseModel responseModel;
   InvalidToastState({
-    required this.loginModel,
+    required this.responseModel,
   });
 }

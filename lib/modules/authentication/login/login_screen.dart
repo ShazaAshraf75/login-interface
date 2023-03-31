@@ -35,7 +35,7 @@ class LoginScreen extends StatelessWidget {
           passwordErrorMsg = "Password must not be empty";
         } else if (state is ChangeCheckboxState) {
           isSelected = state.isSelected;
-        } else if (state is LoginErrorState) {
+        } else if (state is LoginNetworkFailState) {
           showDialog(
             context: context,
             builder: (_) => const CustomAlertDialog(),
@@ -43,7 +43,7 @@ class LoginScreen extends StatelessWidget {
           );
         } else if (state is ValidToastState) {
           Fluttertoast.showToast(
-              msg: state.loginModel.resultMessageEn.toString(),
+              msg: state.responseModel.resultMessageEn.toString(),
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.BOTTOM,
               timeInSecForIosWeb: 3,
@@ -53,10 +53,11 @@ class LoginScreen extends StatelessWidget {
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                  builder: (context) => HomeScreen(state.loginModel.data)));
+                  builder: (context) =>
+                      HomeScreen(state.responseModel.userDataResponseModel)));
         } else if (state is InvalidToastState) {
           Fluttertoast.showToast(
-              msg: state.loginModel.resultMessageEn.toString(),
+              msg: state.responseModel.resultMessageEn.toString(),
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.BOTTOM,
               timeInSecForIosWeb: 3,

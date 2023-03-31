@@ -35,7 +35,7 @@ class AuthenticationApiManager {
         apiFail(value);
       }
     }).catchError((onError) {
-      apiNetworkFail(onError);
+      apiNetworkFail(onError.toString());
     });
     return authenticationResponseModel;
   }

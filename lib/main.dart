@@ -5,22 +5,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_bloc.dart';
 import 'package:login_interface/modules/authentication/login/bloc/observer.dart';
 import 'package:login_interface/modules/authentication/login/login_screen.dart';
-import 'package:login_interface/network/dio_helper.dart';
 import 'package:login_interface/theme/theme.dart';
-
 
 void main() {
   Bloc.observer = MyBlocObserver();
-  DioHelper.init();
 
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>LoginBloc(),
+      create: (context) => LoginBloc(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: defaultTheme,
