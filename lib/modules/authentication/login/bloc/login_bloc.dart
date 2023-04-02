@@ -50,9 +50,7 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
   }
 
   void _onCheckboxValueChangedEvent(
-    CheckboxValueChangedEvent event,
-    Emitter<LoginStates> emit,
-  ) {
+      CheckboxValueChangedEvent event, Emitter<LoginStates> emit) {
     var isSelected = event.value;
     emit(ChangeCheckboxState(isSelected: isSelected));
   }
