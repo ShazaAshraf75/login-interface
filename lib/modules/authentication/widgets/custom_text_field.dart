@@ -133,6 +133,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
           obscureText: widget.obscure,
           controller: widget.controller,
           keyboardType: widget.keyboardType,
+          cursorColor: ColorManager.darkPurpleColor,
+          style: const TextStyle(
+            fontSize: 13,
+            fontFamily: 'Montserrat',
+            backgroundColor: Colors.transparent,
+          ),
           decoration: InputDecoration(
             errorText: widget.errorText,
             contentPadding:

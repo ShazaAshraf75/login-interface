@@ -57,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                       HomeScreen(state.responseModel.userDataResponseModel)));
         } else if (state is InvalidToastState) {
           Fluttertoast.showToast(
-              msg: state.responseModel.resultMessageEn.toString(),
+              msg: state.message,
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.BOTTOM,
               timeInSecForIosWeb: 3,

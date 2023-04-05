@@ -18,29 +18,25 @@ class LoginRepository {
     LoginStates? authenticationState;
     AuthenticationResponseModel? authenticationResponseModel;
 
-    await authenticationApiManager.loginApi(
-      username,
-      password,
-      (AuthenticationResponseModel response) {
-        authenticationResponseModel = response;
-        authenticationState =
-            LoginApiSuccessState(responseModel: authenticationResponseModel!);
-      },
-      (AuthenticationResponseModel response) {
-        authenticationState =
-            LoginApiFailState(response.resultMessageEn.toString());
-      },
-      (error) {
-        authenticationState = LoginNetworkFailState(error);
-      },
-    );
+    await authenticationApiManager.loginApi(username, password,
+        (AuthenticationResponseModel response) {
+      authenticationResponseModel = response;
+      authenticationState =
+          LoginApiSuccessState(responseModel: authenticationResponseModel!);
+    }, (AuthenticationResponseModel response) {
+      authenticationResponseModel = response;
+      authenticationState = LoginApiFailState(
+          message: authenticationResponseModel!.resultMessageEn.toString());
+    }, (error) {
+      authenticationState = LoginNetworkFailState(error);
+    });
 
     if (authenticationState is LoginApiSuccessState) {
       authenticationState =
           ValidToastState(responseModel: authenticationResponseModel!);
     } else if (authenticationState is LoginApiFailState) {
-      authenticationState =
-          InvalidToastState(responseModel: authenticationResponseModel!);
+      authenticationState = InvalidToastState(
+          message: authenticationResponseModel!.resultMessageEn.toString());
     }
     return authenticationState!;
   }

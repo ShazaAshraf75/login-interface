@@ -6,6 +6,8 @@ class LoginInitialState extends LoginStates {}
 
 class LoginLoadingState extends LoginStates {}
 
+class LoginNotLoadingState extends LoginStates {}
+
 class LoginApiSuccessState extends LoginStates {
   final AuthenticationResponseModel responseModel;
   LoginApiSuccessState({
@@ -15,7 +17,7 @@ class LoginApiSuccessState extends LoginStates {
 
 class LoginApiFailState extends LoginStates {
   final String message;
-  LoginApiFailState(this.message);
+  LoginApiFailState({required this.message});
 }
 
 class LoginNetworkFailState extends LoginStates {
@@ -47,8 +49,8 @@ class ValidToastState extends LoginStates {
 }
 
 class InvalidToastState extends LoginStates {
-  final AuthenticationResponseModel responseModel;
+  final String message;
   InvalidToastState({
-    required this.responseModel,
+    required this.message,
   });
 }
