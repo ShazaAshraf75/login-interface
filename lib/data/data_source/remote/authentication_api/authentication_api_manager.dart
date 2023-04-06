@@ -1,12 +1,13 @@
+import 'package:dio/dio.dart';
+import 'package:login_interface/data/data_source/remote/api_key.dart';
 import 'package:login_interface/data/data_source/remote/authentication_api/authentication_api_service.dart';
 import 'package:login_interface/models/authentication_request_model.dart';
 import 'package:login_interface/models/authentication_response_model.dart';
 import 'package:login_interface/models/user_data_request_model.dart';
 
 class AuthenticationApiManager {
-  final AuthenticationApiService? authenticationApiService;
-
-  AuthenticationApiManager(this.authenticationApiService);
+  AuthenticationApiService? authenticationApiService;
+  AuthenticationResponseModel? authenticationResponseModel;
 
   Future loginApi(
     String? username,
@@ -15,7 +16,9 @@ class AuthenticationApiManager {
     Function(AuthenticationResponseModel) apiFail,
     Function(String) apiNetworkFail,
   ) async {
-    AuthenticationResponseModel? authenticationResponseModel;
+    final dio =
+        Dio(BaseOptions(baseUrl: ApiKey.baseUrl, headers: ApiKey.headers));
+    authenticationApiService = AuthenticationApiService(dio);
     await authenticationApiService!
         .loginApi(AuthenticationRequestModel(
             userId: 0,

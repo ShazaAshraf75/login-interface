@@ -1,10 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:login_interface/data/data_source/remote/api_key.dart';
-import 'package:login_interface/data/data_source/remote/authentication_api/authentication_api_manager.dart';
-import 'package:login_interface/data/data_source/remote/authentication_api/authentication_api_service.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_events.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_repository.dart';
 
@@ -18,9 +14,7 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
     on<PasswordValidatedEvent>(_onPasswordValidatedEvent);
   }
 
-  LoginRepository loginRepository = LoginRepository(
-      authenticationApiManager: AuthenticationApiManager(
-          AuthenticationApiService(Dio(), baseUrl: ApiKey.baseUrl)));
+  LoginRepository loginRepository = LoginRepository();
 
   Future<void> _onUserLoggedInEvent(
       UserLoggedInEvent event, Emitter<LoginStates> emit) async {

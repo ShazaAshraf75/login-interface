@@ -5,11 +5,8 @@ import 'package:login_interface/models/authentication_response_model.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_states.dart';
 
 class LoginRepository {
-  final AuthenticationApiManager authenticationApiManager;
-
-  LoginRepository({
-    required this.authenticationApiManager,
-  });
+  AuthenticationApiManager? authenticationApiManager =
+      AuthenticationApiManager();
 
   Future<LoginStates> loginApi({
     required String? username,
@@ -18,7 +15,7 @@ class LoginRepository {
     LoginStates? authenticationState;
     AuthenticationResponseModel? authenticationResponseModel;
 
-    await authenticationApiManager.loginApi(username, password,
+    await authenticationApiManager!.loginApi(username, password,
         (AuthenticationResponseModel response) {
       authenticationResponseModel = response;
       authenticationState =

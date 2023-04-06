@@ -10,14 +10,8 @@ part 'authentication_api_service.g.dart';
 
 @RestApi(baseUrl: ApiKey.baseUrl)
 abstract class AuthenticationApiService {
-  // factory AuthenticationApiService(
-  //   Dio dio,
-  // ) = _AuthenticationApiService;
-  factory AuthenticationApiService(Dio dio, {required String baseUrl}) {
-    dio.options = BaseOptions(headers: ApiKey.headers);
-
-    return _AuthenticationApiService(dio, baseUrl: baseUrl);
-  }
+  factory AuthenticationApiService(Dio dio, {String baseUrl}) =
+      _AuthenticationApiService;
 
   @POST(ApiKey.login)
   Future<AuthenticationResponseModel> loginApi(
