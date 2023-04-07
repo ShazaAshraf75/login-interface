@@ -9,6 +9,14 @@ class AuthenticationApiManager {
   AuthenticationApiService? authenticationApiService;
   AuthenticationResponseModel? authenticationResponseModel;
 
+  static Dio? dio;
+  static dioInit() {
+    dio = Dio(BaseOptions(
+      baseUrl: ApiKey.baseUrl,
+      headers: ApiKey.headers,
+    ));
+  }
+
   Future loginApi(
     String? username,
     String? password,
@@ -16,9 +24,7 @@ class AuthenticationApiManager {
     Function(AuthenticationResponseModel) apiFail,
     Function(String) apiNetworkFail,
   ) async {
-    final dio =
-        Dio(BaseOptions(baseUrl: ApiKey.baseUrl, headers: ApiKey.headers));
-    authenticationApiService = AuthenticationApiService(dio);
+    authenticationApiService = AuthenticationApiService(dio!);
     await authenticationApiService!
         .loginApi(AuthenticationRequestModel(
             userId: 0,

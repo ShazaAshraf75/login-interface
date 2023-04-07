@@ -8,9 +8,9 @@ import 'package:retrofit/http.dart';
 
 part 'authentication_api_service.g.dart';
 
-@RestApi(baseUrl: ApiKey.baseUrl)
+@RestApi()
 abstract class AuthenticationApiService {
-  factory AuthenticationApiService(Dio dio, {String baseUrl}) =
+  factory AuthenticationApiService(Dio dio) =
       _AuthenticationApiService;
 
   @POST(ApiKey.login)

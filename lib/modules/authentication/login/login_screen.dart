@@ -22,17 +22,17 @@ class LoginScreen extends StatelessWidget {
     return BlocConsumer<LoginBloc, LoginStates>(
       listener: (context, state) {
         if (state is UsernameIsEmptyState) {
-          usernameErrorMsg = "Username must not be empty";
+          usernameErrorMsg = "Username is required";
         } else if (state is UsernameIsNotEmptyState) {
           usernameErrorMsg = null;
         }
         if (state is PasswordIsEmptyState) {
-          passwordErrorMsg = "Password must not be empty";
+          passwordErrorMsg = "Password is required";
         } else if (state is PasswordIsNotEmptyState) {
           passwordErrorMsg = null;
         } else if (state is LoginFormIsEmptyState) {
-          usernameErrorMsg = "Username must not be empty";
-          passwordErrorMsg = "Password must not be empty";
+          usernameErrorMsg = "Username is required";
+          passwordErrorMsg = "Password is required";
         } else if (state is ChangeCheckboxState) {
           isSelected = state.isSelected;
         } else if (state is LoginNetworkFailState) {

@@ -133,20 +133,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
           obscureText: widget.obscure,
           controller: widget.controller,
           keyboardType: widget.keyboardType,
-          cursorColor: ColorManager.darkPurpleColor,
-          style: const TextStyle(
-            fontSize: 13,
-            fontFamily: 'Montserrat',
-            backgroundColor: Colors.transparent,
-          ),
+          style: Theme.of(context).textTheme.labelLarge,
           decoration: InputDecoration(
             errorText: widget.errorText,
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-            hintStyle: const TextStyle(
-                fontSize: 13,
-                fontFamily: 'Montserrat',
-                color: ColorManager.textColor),
+            hintStyle: Theme.of(context)
+                .textTheme
+                .labelLarge!
+                .copyWith(color: ColorManager.textColor),
             hintText: widget.hintText,
             suffixIcon: (widget.isObscure == false)
                 ? svgPicture

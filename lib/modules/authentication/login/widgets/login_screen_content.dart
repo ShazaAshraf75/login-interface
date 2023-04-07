@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import 'package:login_interface/modules/authentication/login/bloc/login_bloc.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_events.dart';
 import 'package:login_interface/modules/authentication/widgets/account_widget.dart';
@@ -42,7 +41,6 @@ class LoginScreenContent extends StatelessWidget {
             children: [
               const DFMSwidget(),
               Positioned(
-                // top: MediaQuery.of(context).size.height * 0.23,
                 top: 180,
                 width: MediaQuery.of(context).size.width * 1,
                 height: 360,
@@ -136,7 +134,6 @@ class LoginScreenContent extends StatelessWidget {
                 ),
               ),
               Positioned(
-                // top: MediaQuery.of(context).size.height * 0.59,
                 top: 520,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,

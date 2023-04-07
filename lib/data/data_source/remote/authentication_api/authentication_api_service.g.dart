@@ -10,11 +10,7 @@ part of 'authentication_api_service.dart';
 
 class _AuthenticationApiService implements AuthenticationApiService {
   _AuthenticationApiService(
-    this._dio, {
-    this.baseUrl,
-  }) {
-    baseUrl ??= 'http://45.35.169.130:8765/BridgeForce_API_Test/api/';
-  }
+    this._dio);
 
   final Dio _dio;
 
