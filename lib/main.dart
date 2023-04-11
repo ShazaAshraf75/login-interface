@@ -2,15 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:login_interface/data/data_source/remote/authentication_api/authentication_api_manager.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_bloc.dart';
 import 'package:login_interface/modules/authentication/login/bloc/observer.dart';
 import 'package:login_interface/modules/authentication/login/login_screen.dart';
 import 'package:login_interface/theme/theme.dart';
+import 'package:login_interface/utils/network/dio_helper.dart';
 
 void main() {
   Bloc.observer = MyBlocObserver();
-  AuthenticationApiManager.dioInit();
+  DioHelper.init();
 
   runApp(MyApp());
 }
