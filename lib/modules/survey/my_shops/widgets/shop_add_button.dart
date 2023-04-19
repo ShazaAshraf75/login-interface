@@ -15,7 +15,7 @@ class ShopAddButton extends StatelessWidget {
     return Container(
         height: 32,
         width: 32,
-        margin: const EdgeInsets.all(12),
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
         child: MaterialButton(
           elevation: 0,

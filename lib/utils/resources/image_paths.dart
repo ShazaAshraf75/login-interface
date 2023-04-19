@@ -6,6 +6,7 @@ class ImagePaths {
   static const String email = "assets/icons/icEmailAdrress.svg";
   static const String phone = "assets/icons/icPhone.svg";
   static const String error = "assets/icons/error.svg";
+  static const String serach = "assets/icons/search.svg";
   static const String selected_dashboard =
       "assets/icons/selected_dashbaord.svg";
   static const String unselected_dashboard =
