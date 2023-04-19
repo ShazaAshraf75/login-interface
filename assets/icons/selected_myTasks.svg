@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="24" viewBox="0 0 28 24">
+    <g data-name="my tasks">
+        <g data-name="Group 203" transform="translate(-126 -758)">
+            <rect data-name="Rectangle 419" width="12" height="12" rx="2" transform="translate(142 770)" style="fill:#ff375e"/>
+            <g data-name="vuesax/outline/task-square">
+                <path d="M6 1.5H.75A.755.755 0 0 1 0 .75.755.755 0 0 1 .75 0H6a.75.75 0 0 1 0 1.5z" transform="translate(137.62 766.12)" style="fill:#4f008c"/>
+                <path data-name="Vector" d="M1.5 3.748a.742.742 0 0 1-.53-.22l-.75-.75a.75.75 0 0 1 1.06-1.06l.22.22L3.217.218a.75.75 0 0 1 1.06 1.06l-2.25 2.25a.749.749 0 0 1-.527.22z" transform="translate(131.622 764.633)" style="fill:#4f008c"/>
+                <path data-name="Vector" d="M6 1.5H.75A.755.755 0 0 1 0 .75.755.755 0 0 1 .75 0H6a.75.75 0 0 1 0 1.5z" transform="translate(137.62 773.12)" style="fill:#4f008c"/>
+                <path data-name="Vector" d="M1.5 3.747a.742.742 0 0 1-.53-.22l-.75-.75a.75.75 0 0 1 1.06-1.06l.22.22L3.217.218a.75.75 0 0 1 1.06 1.06l-2.25 2.25a.749.749 0 0 1-.527.219z" transform="translate(131.622 771.633)" style="fill:#4f008c"/>
+                <path data-name="Vector" d="M13.75 21.5h-6C2.32 21.5 0 19.18 0 13.75v-6C0 2.32 2.32 0 7.75 0h6c5.43 0 7.75 2.32 7.75 7.75v6c0 5.43-2.32 7.75-7.75 7.75zm-6-20C3.14 1.5 1.5 3.14 1.5 7.75v6C1.5 18.36 3.14 20 7.75 20h6c4.61 0 6.25-1.64 6.25-6.25v-6c0-4.61-1.64-6.25-6.25-6.25z" transform="translate(127.25 759.25)" style="fill:#4f008c"/>
+            </g>
+        </g>
+    </g>
+</svg>

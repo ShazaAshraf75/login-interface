@@ -6,7 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_states.dart';
 import 'package:login_interface/modules/authentication/login/widgets/login_screen_content.dart';
 import 'package:login_interface/modules/authentication/widgets/custom_alert_dialog.dart';
-import '../../home/home_screen.dart';
+import 'package:login_interface/modules/survey/shared/navigation/navigation_screen.dart';
 import 'bloc/login_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -51,10 +51,7 @@ class LoginScreen extends StatelessWidget {
               textColor: Colors.white,
               fontSize: 14.0);
           Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      HomeScreen(state.responseModel.userDataResponseModel)));
+              context, MaterialPageRoute(builder: (context) => NavigationScreen()));
         } else if (state is InvalidToastState) {
           Fluttertoast.showToast(
               msg: state.message,
