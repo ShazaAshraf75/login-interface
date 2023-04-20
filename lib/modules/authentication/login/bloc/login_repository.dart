@@ -1,7 +1,7 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:login_interface/data/data_source/remote/authentication_api/authentication_api_manager.dart';
-import 'package:login_interface/models/authentication_response_model.dart';
+import 'package:login_interface/models/authentication_model/authentication_response_model.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_states.dart';
 
 class LoginRepository {

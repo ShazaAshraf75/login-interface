@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path data-name="Path 47" d="M0 0h24v24H0z" style="fill:none"/>
+    <path data-name="Line 36" transform="translate(3 21)" style="stroke:#4f008c;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;fill:none" d="M0 0h18"/>
+    <path data-name="Path 48" d="M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4" style="stroke:#4f008c;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;fill:none"/>
+    <path data-name="Line 37" transform="translate(5 10.85)" style="stroke:#4f008c;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;fill:none" d="M0 10.15V0"/>
+    <path data-name="Line 38" transform="translate(19 10.85)" style="stroke:#4f008c;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;fill:none" d="M0 10.15V0"/>
+    <path data-name="Path 49" d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4" style="stroke:#4f008c;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;fill:none"/>
+</svg>

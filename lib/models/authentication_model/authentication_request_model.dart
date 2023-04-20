@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:login_interface/models/user_data_request_model.dart';
-
+import 'package:login_interface/models/authentication_model/user_data_request_model.dart';
 part 'authentication_request_model.g.dart';
 
 @JsonSerializable()
@@ -21,8 +20,8 @@ class AuthenticationRequestModel {
   final UserDataRequestModel? userDataRequestModel;
 
   AuthenticationRequestModel({
-   required this.userId,
-   required this.ipAddress,
+    required this.userId,
+    required this.ipAddress,
     required this.deviceToken,
     required this.osversion,
     required this.appVersion,

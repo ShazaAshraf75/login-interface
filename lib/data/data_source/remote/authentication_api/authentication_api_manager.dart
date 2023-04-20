@@ -1,7 +1,7 @@
 import 'package:login_interface/data/data_source/remote/authentication_api/authentication_api_service.dart';
-import 'package:login_interface/models/authentication_request_model.dart';
-import 'package:login_interface/models/authentication_response_model.dart';
-import 'package:login_interface/models/user_data_request_model.dart';
+import 'package:login_interface/models/authentication_model/authentication_request_model.dart';
+import 'package:login_interface/models/authentication_model/authentication_response_model.dart';
+import 'package:login_interface/models/authentication_model/user_data_request_model.dart';
 import 'package:login_interface/utils/network/dio_helper.dart';
 
 class AuthenticationApiManager {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_add_button.dart';
+import 'package:login_interface/modules/survey/my_shops/widgets/shop_card.dart';
+import 'package:login_interface/modules/survey/my_shops/widgets/shop_custom_outlined_button.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_search_bar.dart';
 import 'package:login_interface/utils/resources/image_paths.dart';
 
@@ -26,7 +28,40 @@ class MyShopsScreen extends StatelessWidget {
                 keyboardType: TextInputType.name,
                 hintText: "Search",
                 prefixIcon: ImagePaths.serach,
-                onChange: (value) {})
+                onChange: (value) {}),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: ShopCustomOutlinedButton(
+                          label: "Filter",
+                          icon: ImagePaths.filter,
+                          onPressed: () {}),
+                    ),
+                    const SizedBox(width: 17),
+                    Expanded(
+                      child: ShopCustomOutlinedButton(
+                        label: "Map",
+                        icon: ImagePaths.map,
+                        onPressed: () {},
+                      ),
+                    )
+                  ]),
+            ),
+            ShopCard(
+              shopName: "shopName",
+              visitedByName: "visitedByName",
+              visitedOnDate: "visitedOnDate",
+              shopLocation: "shopLocation",
+              shopStatus: "Open",
+              onCardPressed: () {},
+              onUpdatePressed: () {},
+              onLocationPressed: () {},
+              onSurveyPressed: () {},
+              onCallPressed: () {},
+            )
           ],
         ),
       ),

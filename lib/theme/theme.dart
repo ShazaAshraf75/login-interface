@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:login_interface/theme/color_manager.dart';
 
 ThemeData defaultTheme = ThemeData(
-    primaryColor: ColorManager.darkPurpleColor,
+    primarySwatch: Colors.deepPurple,
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: Colors.white,
       selectedLabelStyle: TextStyle(

@@ -1,4 +1,4 @@
-import 'package:login_interface/models/authentication_response_model.dart';
+import 'package:login_interface/models/authentication_model/authentication_response_model.dart';
 
 abstract class LoginStates {}
 

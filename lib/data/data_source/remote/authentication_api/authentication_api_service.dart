@@ -2,8 +2,8 @@
 
 import 'package:dio/dio.dart';
 import 'package:login_interface/data/data_source/remote/api_key.dart';
-import 'package:login_interface/models/authentication_request_model.dart';
-import 'package:login_interface/models/authentication_response_model.dart';
+import 'package:login_interface/models/authentication_model/authentication_request_model.dart';
+import 'package:login_interface/models/authentication_model/authentication_response_model.dart';
 import 'package:retrofit/http.dart';
 
 part 'authentication_api_service.g.dart';

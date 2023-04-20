@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <path data-name="Path 10" d="M0 0h24v24H0z" style="fill:none"/>
+    <path data-name="Path 11" d="M4 13a8 8 0 0 1 7 7 6 6 0 0 0 3-5 9 9 0 0 0 6-8 3 3 0 0 0-3-3 9 9 0 0 0-8 6 6 6 0 0 0-5 3" style="stroke:#4f008c;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;fill:none"/>
+    <path data-name="Path 12" d="M7 14a6 6 0 0 0-3 6 6 6 0 0 0 6-3" style="stroke:#4f008c;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;fill:none"/>
+    <circle data-name="Ellipse 9" cx="1" cy="1" r="1" transform="translate(14 8)" style="stroke:#4f008c;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;fill:none"/>
+</svg>

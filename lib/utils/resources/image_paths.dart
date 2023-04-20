@@ -21,4 +21,10 @@ class ImagePaths {
       "assets/icons/selected_offlineTasks.svg";
   static const String unselected_offlineTasks =
       "assets/icons/unselected_offlineTasks.svg";
+  static const String filter = "assets/icons/filter.svg";
+  static const String map = "assets/icons/map.svg";
+  static const String update = "assets/icons/update.svg";
+  static const String location = "assets/icons/location.svg";
+  static const String survey = "assets/icons/survey.svg";
+  static const String call = "assets/icons/call.svg";
 }
