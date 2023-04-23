@@ -27,4 +27,6 @@ class ImagePaths {
   static const String location = "assets/icons/location.svg";
   static const String survey = "assets/icons/survey.svg";
   static const String call = "assets/icons/call.svg";
+  static const String back = "assets/icons/back.svg";
+  static const String redLocation = "assets/icons/red_location.svg";
 }

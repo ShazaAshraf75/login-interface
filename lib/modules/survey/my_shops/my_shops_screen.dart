@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_interface/modules/survey/my_shops/details/shop_details_screen.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_add_button.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_card.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_custom_outlined_button.dart';
@@ -56,7 +57,10 @@ class MyShopsScreen extends StatelessWidget {
               visitedOnDate: "visitedOnDate",
               shopLocation: "shopLocation",
               shopStatus: "Open",
-              onCardPressed: () {},
+              onCardPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ShopDetailsScreen())),
               onUpdatePressed: () {},
               onLocationPressed: () {},
               onSurveyPressed: () {},

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_card_icon.dart';
+import 'package:login_interface/modules/survey/my_shops/widgets/status_widget.dart';
 import 'package:login_interface/theme/color_manager.dart';
 import 'package:login_interface/utils/resources/image_paths.dart';
 
@@ -88,22 +89,7 @@ class ShopCard extends StatelessWidget {
                                   fontSize: 12,
                                 )),
                         const Spacer(),
-                        Container(
-                          width: 48,
-                          height: 27,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              color: ColorManager.greenColor,
-                              borderRadius: BorderRadius.circular(15)),
-                          child: Text(shopStatus,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelLarge!
-                                  .copyWith(
-                                    fontSize: 11,
-                                    color: Colors.white,
-                                  )),
-                        ),
+                        StatusWidget(status: shopStatus),
                       ],
                     ),
                     const SizedBox(height: 12),
