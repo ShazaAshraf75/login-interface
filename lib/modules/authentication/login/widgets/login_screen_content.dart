@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_bloc.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_events.dart';
 import 'package:login_interface/modules/authentication/widgets/account_widget.dart';
-import 'package:login_interface/modules/authentication/widgets/custom_button.dart';
+import 'package:login_interface/modules/widgets/default_button.dart';
 import 'package:login_interface/modules/authentication/widgets/custom_text_field.dart';
 import 'package:login_interface/modules/authentication/widgets/dfms_widget.dart';
 import 'package:login_interface/theme/color_manager.dart';
@@ -138,7 +138,7 @@ class LoginScreenContent extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    CustomButton(
+                    DefaultButton(
                         text: 'Login',
                         width: MediaQuery.of(context).size.width * 0.7,
                         onTap: () {

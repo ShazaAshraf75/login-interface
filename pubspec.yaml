@@ -44,6 +44,7 @@ dependencies:
   equatable: ^2.0.5
   retrofit: ^4.0.1
   json_annotation: ^4.8.0
+  intl: ^0.18.1
 
 
 dev_dependencies:

@@ -11,4 +11,6 @@ class ColorManager {
   static const Color searchBarTextColor = Color.fromRGBO(181, 178, 178, 1);
   static const Color textColor = Color.fromRGBO(185, 185, 185, 1);
   static const Color lightPinkColor = Color.fromRGBO(255, 55, 94, 0.12);
+  static const Color defaultButtonBackgroundColor =
+      Color.fromRGBO(227, 227, 227, 1);
 }

@@ -8,7 +8,7 @@ import 'package:login_interface/modules/authentication/widgets/account_widget.da
 import 'package:login_interface/modules/authentication/widgets/custom_text_field.dart';
 import 'package:login_interface/utils/resources/image_paths.dart';
 
-import '../widgets/custom_button.dart';
+import '../../widgets/default_button.dart';
 import '../widgets/dfms_widget.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -177,7 +177,7 @@ class RegisterScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  CustomButton(
+                  DefaultButton(
                     text: 'Sign Up',
                     width: MediaQuery.of(context).size.width * 0.7,
                     onTap: () {

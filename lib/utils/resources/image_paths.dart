@@ -29,4 +29,5 @@ class ImagePaths {
   static const String call = "assets/icons/call.svg";
   static const String back = "assets/icons/back.svg";
   static const String redLocation = "assets/icons/red_location.svg";
+  static const String calendar = "assets/icons/calendar.svg";
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_interface/modules/survey/filter/filter_screen.dart';
 import 'package:login_interface/modules/survey/my_shops/details/shop_details_screen.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_add_button.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_card.dart';
@@ -39,7 +40,10 @@ class MyShopsScreen extends StatelessWidget {
                       child: ShopCustomOutlinedButton(
                           label: "Filter",
                           icon: ImagePaths.filter,
-                          onPressed: () {}),
+                          onPressed: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const FilterScreen()))),
                     ),
                     const SizedBox(width: 17),
                     Expanded(
