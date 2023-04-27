@@ -1,4 +1,8 @@
+// ignore_for_file: must_be_immutable
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:io' show Platform;
 import 'package:intl/intl.dart';
 import 'package:login_interface/modules/survey/filter/widgets/filter_date_picker.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_custom_back_button.dart';
@@ -6,15 +10,21 @@ import 'package:login_interface/modules/widgets/default_button.dart';
 import 'package:login_interface/theme/color_manager.dart';
 import 'package:login_interface/utils/resources/image_paths.dart';
 
-class FilterScreen extends StatelessWidget {
+class FilterScreen extends StatefulWidget {
   const FilterScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    TextEditingController fromDateController = TextEditingController();
-    TextEditingController toDateController = TextEditingController();
-    var dateFormKey = GlobalKey<FormState>();
+  State<FilterScreen> createState() => _FilterScreenState();
+}
 
+class _FilterScreenState extends State<FilterScreen> {
+  TextEditingController fromDateController = TextEditingController();
+  TextEditingController toDateController = TextEditingController();
+  DateTime currentDate = DateTime.now();
+  var fromDateFormKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -24,7 +34,7 @@ class FilterScreen extends StatelessWidget {
       body: Padding(
           padding: const EdgeInsets.all(16),
           child: Form(
-            key: dateFormKey,
+            key: fromDateFormKey,
             child: Column(
               children: [
                 Row(
@@ -43,15 +53,35 @@ class FilterScreen extends StatelessWidget {
                           }
                         },
                         onTap: () {
-                          showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(2020),
-                                  lastDate: DateTime(2024))
-                              .then((value) {
-                            fromDateController.text =
-                                DateFormat.yMd().format(value!);
-                          });
+                          if (Platform.isIOS) {
+                            showCupertinoModalPopup(
+                                context: context,
+                                builder: (context) => Container(
+                                      color: Colors.white,
+                                      child: SizedBox(
+                                        height: 250,
+                                        child: CupertinoDatePicker(
+                                            backgroundColor: Colors.white,
+                                            mode: CupertinoDatePickerMode.date,
+                                            initialDateTime: currentDate,
+                                            onDateTimeChanged: (newDate) {
+                                              fromDateController.text =
+                                                  DateFormat.yMd()
+                                                      .format(newDate);
+                                            }),
+                                      ),
+                                    ));
+                          } else if (Platform.isAndroid) {
+                            showDatePicker(
+                                    context: context,
+                                    initialDate: currentDate,
+                                    firstDate: DateTime(2020),
+                                    lastDate: DateTime(2024))
+                                .then((value) {
+                              fromDateController.text =
+                                  DateFormat.yMd().format(value ?? currentDate);
+                            });
+                          }
                         },
                       ),
                     ),
@@ -69,15 +99,32 @@ class FilterScreen extends StatelessWidget {
                           }
                         },
                         onTap: () {
-                          showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(2020),
-                                  lastDate: DateTime(2024))
-                              .then((value) {
-                            toDateController.text =
-                                DateFormat.yMd().format(value!);
-                          });
+                          if (Platform.isIOS) {
+                            showCupertinoModalPopup(
+                              context: context,
+                              builder: (context) => SizedBox(
+                                height: 250,
+                                child: CupertinoDatePicker(
+                                    backgroundColor: Colors.white,
+                                    mode: CupertinoDatePickerMode.date,
+                                    initialDateTime: currentDate,
+                                    onDateTimeChanged: (newDate) {
+                                      toDateController.text =
+                                          DateFormat.yMd().format(newDate);
+                                    }),
+                              ),
+                            );
+                          } else if (Platform.isAndroid) {
+                            showDatePicker(
+                                    context: context,
+                                    initialDate: currentDate,
+                                    firstDate: DateTime(2020),
+                                    lastDate: DateTime(2024))
+                                .then((value) {
+                              toDateController.text =
+                                  DateFormat.yMd().format(value ?? currentDate);
+                            });
+                          }
                         },
                       ),
                     ),
@@ -93,7 +140,10 @@ class FilterScreen extends StatelessWidget {
                         backgroundColor:
                             ColorManager.defaultButtonBackgroundColor,
                         textColor: Colors.black,
-                        onTap: () {},
+                        onTap: () {
+                          fromDateController.clear();
+                          toDateController.clear();
+                        },
                       ),
                     ),
                     const SizedBox(width: 16),
@@ -101,12 +151,13 @@ class FilterScreen extends StatelessWidget {
                       child: DefaultButton(
                         text: "Apply",
                         onTap: () {
-                          dateFormKey.currentState!.validate();
+                          fromDateFormKey.currentState!.validate();
                         },
                       ),
                     ),
                   ],
-                )
+                ),
+                Text(toDateController.text)
               ],
             ),
           )),

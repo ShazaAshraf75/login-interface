@@ -15,6 +15,7 @@ ThemeData defaultTheme = ThemeData(
       ),
     ),
     appBarTheme: const AppBarTheme(
+        centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
         titleTextStyle: TextStyle(

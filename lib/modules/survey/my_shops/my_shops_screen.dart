@@ -16,6 +16,7 @@ class MyShopsScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text("My Shops"),
         actions: [ShopAddButton(onPressed: () {})],

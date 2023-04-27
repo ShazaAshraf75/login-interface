@@ -17,6 +17,7 @@ class NavigationScreen extends StatelessWidget {
     return BlocBuilder<NavigationBloc, NavigationStates>(
         builder: (context, state) {
       return Scaffold(
+        resizeToAvoidBottomInset: false,
         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             fixedColor: ColorManager.darkPurpleColor,

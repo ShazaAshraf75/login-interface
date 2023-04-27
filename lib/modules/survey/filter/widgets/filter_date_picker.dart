@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -31,43 +33,45 @@ class FilterDatePicker extends StatelessWidget {
       width: 24,
     );
 
-    return SizedBox(
-      height: 44,
-      child: Material(
-          color: Colors.transparent,
-          child: TextFormField(
-            style: Theme.of(context).textTheme.labelLarge!.copyWith(color: ColorManager.textColor),
-            onTap: onTap,
-            validator: validator,
-            controller: controller,
-            keyboardType: keyboardType ?? TextInputType.datetime,
-            decoration: InputDecoration(
-              fillColor: Colors.white,
-              disabledBorder: OutlineInputBorder(
-                borderSide:
-                    const BorderSide(color: ColorManager.textColor, width: .5),
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide:
-                    const BorderSide(color: ColorManager.textColor, width: .5),
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide:
-                    const BorderSide(color: ColorManager.textColor, width: .5),
-                borderRadius: BorderRadius.circular(12.0),
-              ),
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
-              hintStyle: const TextStyle(
-                  fontSize: 13,
-                  fontFamily: 'Montserrat',
-                  color: ColorManager.textColor),
-              hintText: hintText,
-              suffixIcon: svgPicture,
+    return Material(
+        color: Colors.transparent,
+        child: TextFormField(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          readOnly: true,
+          style: Theme.of(context)
+              .textTheme
+              .labelLarge!
+              .copyWith(color: ColorManager.textColor),
+          onTap: onTap,
+          validator: validator,
+          controller: controller,
+          keyboardType: keyboardType ?? TextInputType.datetime,
+          decoration: InputDecoration(
+            fillColor: Colors.white,
+            disabledBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(color: ColorManager.textColor, width: .5),
+              borderRadius: BorderRadius.circular(12.0),
             ),
-          )),
-    );
+            focusedBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(color: ColorManager.textColor, width: .5),
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide:
+                  const BorderSide(color: ColorManager.textColor, width: .5),
+              borderRadius: BorderRadius.circular(12.0),
+            ),
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+            hintStyle: const TextStyle(
+                fontSize: 13,
+                fontFamily: 'Montserrat',
+                color: ColorManager.textColor),
+            hintText: hintText,
+            suffixIcon: svgPicture,
+          ),
+        ));
   }
 }
