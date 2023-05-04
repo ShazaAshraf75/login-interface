@@ -28,26 +28,23 @@ class MyShopsScreen extends StatelessWidget {
     TextEditingController searchController = TextEditingController();
     List<ShopsDataResponseModel> allShopsList = [];
     bool flag = false;
-    return BlocProvider(
-      create: (context) => ShopsBloc()..add(ShopsFetechedEvent()),
-      child: BlocConsumer<ShopsBloc, ShopsStates>(
-        listener: (context, state) {
-          if (state is ShopsLoadingState) {
-            flag = true;
-          } else if (state is ShopsNotLoadingState) {
-            flag = false;
-          } else if (state is ShopsApiSuccessState) {
-            allShopsList = state.shopsDataResponseList;
-          }
-        },
-        builder: (context, state) {
-          return MyShopsContent(
-            allShopsList: allShopsList,
-            searchController: searchController,
-            flag: flag,
-          );
-        },
-      ),
+    BlocProvider.of<ShopsBloc>(context).add(ShopsFetechedEvent());
+    return BlocConsumer<ShopsBloc, ShopsStates>(
+      listener: (context, state) {
+        if (state is ShopsLoadingState) {
+          flag = true;
+        } else if (state is ShopsApiSuccessState) {
+          flag = false;
+          allShopsList = state.shopsDataResponseList;
+        } 
+      },
+      builder: (context, state) {
+        return MyShopsContent(
+          allShopsList: allShopsList,
+          searchController: searchController,
+          flag: flag,
+        );
+      },
     );
   }
 }

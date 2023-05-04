@@ -11,7 +11,7 @@ class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
   NavigationBloc() : super(NavigationInitialState()) {
     on<BottomNavBarChangedEvent>(_onBottomNavBarChange);
   }
-  int currentIndex = 0;
+  int currentIndex = 2;
   List<Widget> screens = [
     const DashboardScreen(),
     const MyTasksScreen(),

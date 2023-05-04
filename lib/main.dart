@@ -5,7 +5,6 @@ import 'package:login_interface/modules/authentication/login/bloc/login_bloc.dar
 import 'package:login_interface/modules/authentication/login/bloc/observer.dart';
 import 'package:login_interface/modules/authentication/login/login_screen.dart';
 import 'package:login_interface/modules/survey/my_shops/bloc/shops_bloc.dart';
-import 'package:login_interface/modules/survey/my_shops/bloc/shops_events.dart';
 import 'package:login_interface/modules/survey/shared/navigation/bloc/navigation_bloc.dart';
 import 'package:login_interface/theme/theme.dart';
 import 'package:login_interface/utils/network/dio_helper.dart';

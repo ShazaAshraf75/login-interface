@@ -17,8 +17,6 @@ class ShopsBloc extends Bloc<ShopsEvents, ShopsStates> {
     emit(ShopsLoadingState());
     await shopsRepository.getAllShopsList().then((value) {
       emit(value);
-    }).then((value) {
-      emit(ShopsNotLoadingState());
     });
   }
 }
