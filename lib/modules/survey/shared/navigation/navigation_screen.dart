@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:login_interface/modules/survey/my_shops/bloc/shops_bloc.dart';
+import 'package:login_interface/modules/survey/my_shops/bloc/shops_events.dart';
 import 'package:login_interface/modules/survey/shared/navigation/bloc/navigation_bloc.dart';
 import 'package:login_interface/modules/survey/shared/navigation/bloc/navigation_events.dart';
 import 'package:login_interface/modules/survey/shared/navigation/bloc/navigation_sates.dart';

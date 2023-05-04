@@ -6,6 +6,7 @@ class ApiKey {
   static const String baseUrl =
       "http://45.35.169.130:8765/BridgeForce_API_Test/api/";
   static const login = "user/authentication/login";
+  static const String allShops = 'survey/Shops/all';
   static const String username = 'admin';
   static const String password = 'admin@123';
   static Map<String, dynamic> headers = {

@@ -1,11 +1,24 @@
+// ignore_for_file: unused_import, unused_local_variable
+
 import 'package:flutter/material.dart';
-import 'package:login_interface/modules/survey/filter/filter_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:login_interface/data/data_source/remote/authentication_api/authentication_api_manager.dart';
+import 'package:login_interface/data/data_source/remote/shop_api/shops_api_manager.dart';
+import 'package:login_interface/models/shop_model/shops_data_request_model.dart';
+import 'package:login_interface/models/shop_model/shops_data_response_model.dart';
+import 'package:login_interface/modules/survey/my_shops/bloc/shops_events.dart';
+import 'package:login_interface/modules/survey/my_shops/bloc/shops_repository.dart';
+import 'package:login_interface/modules/survey/my_shops/bloc/shops_states.dart';
 import 'package:login_interface/modules/survey/my_shops/details/shop_details_screen.dart';
+import 'package:login_interface/modules/survey/my_shops/filter/filter_screen.dart';
+import 'package:login_interface/modules/survey/my_shops/widgets/my_shops_content.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_add_button.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_card.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_custom_outlined_button.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_search_bar.dart';
 import 'package:login_interface/utils/resources/image_paths.dart';
+
+import 'bloc/shops_bloc.dart';
 
 class MyShopsScreen extends StatelessWidget {
   const MyShopsScreen({super.key});
@@ -13,66 +26,27 @@ class MyShopsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController searchController = TextEditingController();
-
-    return Scaffold(
-      backgroundColor: Colors.white,
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: const Text("My Shops"),
-        actions: [ShopAddButton(onPressed: () {})],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            ShopSearchBar(
-                controller: searchController,
-                keyboardType: TextInputType.name,
-                hintText: "Search",
-                prefixIcon: ImagePaths.serach,
-                onChange: (value) {}),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: ShopCustomOutlinedButton(
-                          label: "Filter",
-                          icon: ImagePaths.filter,
-                          onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const FilterScreen()))),
-                    ),
-                    const SizedBox(width: 17),
-                    Expanded(
-                      child: ShopCustomOutlinedButton(
-                        label: "Map",
-                        icon: ImagePaths.map,
-                        onPressed: () {},
-                      ),
-                    )
-                  ]),
-            ),
-            ShopCard(
-              shopName: "shopName",
-              visitedByName: "visitedByName",
-              visitedOnDate: "visitedOnDate",
-              shopLocation: "shopLocation",
-              shopStatus: "Open",
-              onCardPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ShopDetailsScreen())),
-              onUpdatePressed: () {},
-              onLocationPressed: () {},
-              onSurveyPressed: () {},
-              onCallPressed: () {},
-            )
-          ],
-        ),
+    List<ShopsDataResponseModel> allShopsList = [];
+    bool flag = false;
+    return BlocProvider(
+      create: (context) => ShopsBloc()..add(ShopsFetechedEvent()),
+      child: BlocConsumer<ShopsBloc, ShopsStates>(
+        listener: (context, state) {
+          if (state is ShopsLoadingState) {
+            flag = true;
+          } else if (state is ShopsNotLoadingState) {
+            flag = false;
+          } else if (state is ShopsApiSuccessState) {
+            allShopsList = state.shopsDataResponseList;
+          }
+        },
+        builder: (context, state) {
+          return MyShopsContent(
+            allShopsList: allShopsList,
+            searchController: searchController,
+            flag: flag,
+          );
+        },
       ),
     );
   }

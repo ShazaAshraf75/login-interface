@@ -1,3 +1,4 @@
+import 'package:login_interface/data/data_source/local/shared_prefrences/cache_helper.dart';
 import 'package:login_interface/data/data_source/remote/authentication_api/authentication_api_service.dart';
 import 'package:login_interface/models/authentication_model/authentication_request_model.dart';
 import 'package:login_interface/models/authentication_model/authentication_response_model.dart';
@@ -31,6 +32,8 @@ class AuthenticationApiManager {
         .then((value) {
       if (value.resultCode == 1) {
         apiSuccess(value);
+        CacheHelper.saveData(
+            key: 'User_PK_ID', value: value.userDataResponseModel!.userPkId!);
       } else {
         apiFail(value);
       }

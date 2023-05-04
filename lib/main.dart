@@ -1,22 +1,27 @@
-// ignore_for_file: use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:login_interface/data/data_source/local/shared_prefrences/cache_helper.dart';
 import 'package:login_interface/modules/authentication/login/bloc/login_bloc.dart';
 import 'package:login_interface/modules/authentication/login/bloc/observer.dart';
 import 'package:login_interface/modules/authentication/login/login_screen.dart';
+import 'package:login_interface/modules/survey/my_shops/bloc/shops_bloc.dart';
+import 'package:login_interface/modules/survey/my_shops/bloc/shops_events.dart';
 import 'package:login_interface/modules/survey/shared/navigation/bloc/navigation_bloc.dart';
 import 'package:login_interface/theme/theme.dart';
 import 'package:login_interface/utils/network/dio_helper.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
+  await CacheHelper.init();
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -26,6 +31,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => NavigationBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ShopsBloc(),
         ),
       ],
       child: MaterialApp(

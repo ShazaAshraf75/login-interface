@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 import 'package:intl/intl.dart';
-import 'package:login_interface/modules/survey/filter/widgets/filter_date_picker.dart';
+import 'package:login_interface/modules/survey/my_shops/filter/widgets/filter_date_picker.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_custom_back_button.dart';
 import 'package:login_interface/modules/widgets/default_button.dart';
 import 'package:login_interface/theme/color_manager.dart';
