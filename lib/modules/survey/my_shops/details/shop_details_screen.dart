@@ -15,7 +15,7 @@ class ShopDetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(item.shopNameEn.toString()),
+        title: Text(item.shopNameEn!),
         leading: const ShopCustomBackButton(),
       ),
       body: Padding(
@@ -24,22 +24,21 @@ class ShopDetailsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ShopDetailsCard(
-                shopName: item.shopNameEn.toString(),
-                shopVisitedOnDate:
-                    dateFormat(item.shopLastVisitedDate.toString()),
+                shopName: item.shopNameEn!,
+                shopVisitedOnDate: dateFormat(item.shopLastVisitedDate!),
                 shopEmail: "shazaashraf75@gmail.com",
-                shopPhoneNumber: item.shopPhone.toString(),
-                shopStatus: item.shopStatusEn.toString()),
+                shopPhoneNumber: item.shopPhone!,
+                shopStatus: item.shopStatusEn!),
             const SizedBox(height: 24),
             ShopDetailsBody(
-              partner: item.shopPartnerEn.toString(),
-              channelType: item.shopChannelTypeFkId.toString(),
-              visitedBy: item.shopLastVistedBy.toString(),
-              owner: item.shopOwner.toString(),
-              code: item.shopCode.toString(),
-              visitedOn: dateFormat(item.shopLastVisitedDate.toString()),
-              location: '${item.shopRegionEn.toString()}'
-                  ' - ${item.shopAreaEn.toString()}',
+              partner: item.shopPartnerEn!,
+              channelType: item.shopChannelTypeFkId!,
+              visitedBy: item.shopLastVistedBy!,
+              owner: item.shopOwner!,
+              code: item.shopCode!,
+              visitedOn: dateFormat(item.shopLastVisitedDate!),
+              location: '${item.shopRegionEn!}'
+                  ' - ${item.shopAreaEn!}',
             ),
           ],
         ),

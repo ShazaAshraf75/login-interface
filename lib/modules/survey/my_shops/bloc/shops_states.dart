@@ -6,8 +6,6 @@ class ShopsInitialState extends ShopsStates {}
 
 class ShopsLoadingState extends ShopsStates {}
 
-class ShopsNotLoadingState extends ShopsStates {}
-
 class ShopsApiSuccessState extends ShopsStates {
   final List<ShopsDataResponseModel> shopsDataResponseList;
 
@@ -25,3 +23,13 @@ class ShopsNetworkFailState extends ShopsStates {
 
   ShopsNetworkFailState({required this.errorMessage});
 }
+
+class SearchInAllShopsListState extends ShopsStates {
+  final List<ShopsDataResponseModel> shopsDataResponseList;
+
+  SearchInAllShopsListState({required this.shopsDataResponseList});
+}
+
+
+
+

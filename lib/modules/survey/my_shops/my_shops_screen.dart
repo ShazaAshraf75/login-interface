@@ -20,15 +20,28 @@ import 'package:login_interface/utils/resources/image_paths.dart';
 
 import 'bloc/shops_bloc.dart';
 
-class MyShopsScreen extends StatelessWidget {
+class MyShopsScreen extends StatefulWidget {
   const MyShopsScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    TextEditingController searchController = TextEditingController();
-    List<ShopsDataResponseModel> allShopsList = [];
-    bool flag = false;
+  State<MyShopsScreen> createState() => _MyShopsScreenState();
+}
+
+class _MyShopsScreenState extends State<MyShopsScreen> {
+  TextEditingController searchController = TextEditingController();
+  List<ShopsDataResponseModel> allShopsList = [];
+  List<ShopsDataResponseModel> foundShopsList = [];
+
+  bool flag = false;
+
+  @override
+  void initState() {
     BlocProvider.of<ShopsBloc>(context).add(ShopsFetechedEvent());
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return BlocConsumer<ShopsBloc, ShopsStates>(
       listener: (context, state) {
         if (state is ShopsLoadingState) {
@@ -36,13 +49,21 @@ class MyShopsScreen extends StatelessWidget {
         } else if (state is ShopsApiSuccessState) {
           flag = false;
           allShopsList = state.shopsDataResponseList;
-        } 
+        }
+        // else if (state is SearchInAllShopsListState) {
+        //   foundShopsList = allShopsList;
+        //   allShopsList = state.shopsDataResponseList;
+        //   print("object");
+        //   print(allShopsList.length);
+        // }
       },
       builder: (context, state) {
+        foundShopsList = allShopsList;
         return MyShopsContent(
           allShopsList: allShopsList,
           searchController: searchController,
           flag: flag,
+          foundShopsList: foundShopsList,
         );
       },
     );
