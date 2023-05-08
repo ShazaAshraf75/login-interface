@@ -41,17 +41,9 @@ class LoginScreen extends StatelessWidget {
             builder: (_) => const CustomAlertDialog(),
             barrierDismissible: false,
           );
-        } else if (state is ValidToastState) {
-          Fluttertoast.showToast(
-              msg: state.responseModel.resultMessageEn.toString(),
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.BOTTOM,
-              timeInSecForIosWeb: 3,
-              backgroundColor: Colors.green,
-              textColor: Colors.white,
-              fontSize: 14.0);
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => NavigationScreen()));
+        } else if (state is LoginApiSuccessState) {
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => NavigationScreen()));
         } else if (state is InvalidToastState) {
           Fluttertoast.showToast(
               msg: state.message,

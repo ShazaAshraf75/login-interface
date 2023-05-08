@@ -41,13 +41,6 @@ class PasswordIsNotEmptyState extends LoginStates {}
 
 class LoginFormIsEmptyState extends LoginStates {}
 
-class ValidToastState extends LoginStates {
-  final AuthenticationResponseModel responseModel;
-  ValidToastState({
-    required this.responseModel,
-  });
-}
-
 class InvalidToastState extends LoginStates {
   final String message;
   InvalidToastState({

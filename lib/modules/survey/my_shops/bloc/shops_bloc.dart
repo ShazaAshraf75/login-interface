@@ -24,18 +24,19 @@ class ShopsBloc extends Bloc<ShopsEvents, ShopsStates> {
   }
 
   void _onSearchInAllShopsListEvent(
-      SearchInAllShopsListEvent event, Emitter<ShopsStates> emit) {
-        
-    allShopsList = [];
-    if (event.key.isNotEmpty) {
-      for (ShopsDataResponseModel element in allShopsList) {
-        if (element.shopNameEn!.toLowerCase().contains(event.key)) {
-          allShopsList.add(element);
-        }
-      }
-      emit(SearchInAllShopsListState(shopsDataResponseList: allShopsList));
+      SearchInAllShopsListEvent event, Emitter<ShopsStates> emit) async {
+    allShopsList = shopsRepository.shopsDataResponseList!;
+    List<ShopsDataResponseModel> results = [];
+    if (event.key.isEmpty) {
+      results = allShopsList;
+      emit(SearchInAllShopsListState(shopsDataResponseList: results));
     } else {
-      emit(SearchInAllShopsListState(shopsDataResponseList: allShopsList));
+      results = allShopsList
+          .where((element) => element.shopNameEn!
+              .toLowerCase()
+              .contains(event.key.toLowerCase()))
+          .toList();
+      emit(SearchInAllShopsListState(shopsDataResponseList: results));
     }
   }
 }

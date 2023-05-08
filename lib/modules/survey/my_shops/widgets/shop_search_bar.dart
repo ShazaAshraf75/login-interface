@@ -10,6 +10,7 @@ class ShopSearchBar extends StatelessWidget {
   String hintText;
   String prefixIcon;
   Function(String)? onChange;
+  void Function()? onClearPressed;
   ShopSearchBar({
     Key? key,
     required this.controller,
@@ -17,6 +18,7 @@ class ShopSearchBar extends StatelessWidget {
     required this.hintText,
     required this.prefixIcon,
     required this.onChange,
+    required this.onClearPressed,
   }) : super(key: key);
 
   @override
@@ -38,6 +40,15 @@ class ShopSearchBar extends StatelessWidget {
           style: Theme.of(context).textTheme.labelLarge,
           decoration: InputDecoration(
               fillColor: ColorManager.searchBarBackgroundColor,
+              suffixIcon: controller.text.isNotEmpty
+                  ? IconButton(
+                      onPressed: onClearPressed,
+                      icon: const Icon(
+                        Icons.close,
+                        size: 20,
+                        color: ColorManager.darkGreyColor,
+                      ))
+                  : null,
               contentPadding:
                   const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
               hintStyle: Theme.of(context)

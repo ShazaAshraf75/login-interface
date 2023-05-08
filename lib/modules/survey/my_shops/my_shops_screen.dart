@@ -47,23 +47,17 @@ class _MyShopsScreenState extends State<MyShopsScreen> {
         if (state is ShopsLoadingState) {
           flag = true;
         } else if (state is ShopsApiSuccessState) {
+          allShopsList = state.shopsDataResponseList;
           flag = false;
+        } else if (state is SearchInAllShopsListState) {
           allShopsList = state.shopsDataResponseList;
         }
-        // else if (state is SearchInAllShopsListState) {
-        //   foundShopsList = allShopsList;
-        //   allShopsList = state.shopsDataResponseList;
-        //   print("object");
-        //   print(allShopsList.length);
-        // }
       },
       builder: (context, state) {
-        foundShopsList = allShopsList;
         return MyShopsContent(
           allShopsList: allShopsList,
           searchController: searchController,
           flag: flag,
-          foundShopsList: foundShopsList,
         );
       },
     );

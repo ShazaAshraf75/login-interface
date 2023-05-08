@@ -18,12 +18,6 @@ class ShopsRepository {
       shopsStates = ShopsNetworkFailState(errorMessage: error);
     });
 
-    // if (shopsStates is SearchInAllShopsListState) {
-    //   shopsStates = SearchInAllShopsListState(
-    //       shopsDataResponseList: shopsDataResponseList!);
-    //   print(shopsDataResponseList!.length);
-    // }
-
     return shopsStates!;
   }
 }
