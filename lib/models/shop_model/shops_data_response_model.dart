@@ -58,8 +58,10 @@ class ShopsDataResponseModel {
   String? shopLastVisitedDate;
   @JsonKey(name: "Shop_LastVistedby")
   String? shopLastVistedBy;
-  @JsonKey(name: "Shop_PendingUpdate", defaultValue: false)
+  @JsonKey(name: "Shop_PendingUpdate")
   bool? shopPendingUpdate;
+  @JsonKey(name: "Shop_CreatedDate")
+  String? shopCreatedDate;
 
   ShopsDataResponseModel({
     this.rowNumber,
@@ -90,6 +92,7 @@ class ShopsDataResponseModel {
     this.shopShopStatusFkId,
     this.shopStatusAr,
     this.shopStatusEn,
+    this.shopCreatedDate,
   });
 
   factory ShopsDataResponseModel.fromJson(Map<String, dynamic> json) =>

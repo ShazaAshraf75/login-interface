@@ -66,7 +66,7 @@ class MyShopsContent extends StatelessWidget {
                           onPressed: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const FilterScreen()))),
+                                  builder: (context) => FilterScreen()))),
                     ),
                     const SizedBox(width: 17),
                     Expanded(

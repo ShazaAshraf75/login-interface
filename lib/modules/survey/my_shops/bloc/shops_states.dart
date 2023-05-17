@@ -29,6 +29,12 @@ class SearchInAllShopsListState extends ShopsStates {
 
   SearchInAllShopsListState({required this.shopsDataResponseList});
 }
+class FilterInShopsState extends ShopsStates {
+  final List<ShopsDataResponseModel> shopsDataResponseList;
+
+  FilterInShopsState({required this.shopsDataResponseList});
+}
+
 
 
 

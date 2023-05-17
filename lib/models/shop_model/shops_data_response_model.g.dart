@@ -27,7 +27,7 @@ ShopsDataResponseModel _$ShopsDataResponseModelFromJson(
       shopPartnerAr: json['Shop_PartnerAr'] as String?,
       shopPartnerEn: json['Shop_PartnerEn'] as String?,
       shopPartnerFkId: json['Shop_Partner_FK_ID'] as String?,
-      shopPendingUpdate: json['Shop_PendingUpdate'] as bool? ?? false,
+      shopPendingUpdate: json['Shop_PendingUpdate'] as bool?,
       shopPhone: json['Shop_Phone'] as String?,
       shopPkId: json['Shop_PK_ID'] as int?,
       shopRegionAr: json['Shop_RegionAr'] as String?,
@@ -37,6 +37,7 @@ ShopsDataResponseModel _$ShopsDataResponseModelFromJson(
       shopShopStatusFkId: json['Shop_ShopStatus_FK_ID'] as int?,
       shopStatusAr: json['Shop_StatusAr'] as String?,
       shopStatusEn: json['Shop_StatusEn'] as String?,
+      shopCreatedDate: json['Shop_CreatedDate'] as String?,
     );
 
 Map<String, dynamic> _$ShopsDataResponseModelToJson(
@@ -70,4 +71,5 @@ Map<String, dynamic> _$ShopsDataResponseModelToJson(
       'Shop_LastVisiteddate': instance.shopLastVisitedDate,
       'Shop_LastVistedby': instance.shopLastVistedBy,
       'Shop_PendingUpdate': instance.shopPendingUpdate,
+      'Shop_CreatedDate': instance.shopCreatedDate,
     };

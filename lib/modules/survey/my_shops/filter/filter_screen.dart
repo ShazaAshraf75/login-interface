@@ -2,25 +2,26 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:io' show Platform;
 import 'package:intl/intl.dart';
+import 'package:login_interface/modules/survey/my_shops/bloc/shops_bloc.dart';
+import 'package:login_interface/modules/survey/my_shops/bloc/shops_events.dart';
 import 'package:login_interface/modules/survey/my_shops/filter/widgets/filter_date_picker.dart';
 import 'package:login_interface/modules/survey/my_shops/widgets/shop_custom_back_button.dart';
 import 'package:login_interface/modules/widgets/default_button.dart';
 import 'package:login_interface/theme/color_manager.dart';
 import 'package:login_interface/utils/resources/image_paths.dart';
 
-class FilterScreen extends StatefulWidget {
-  const FilterScreen({super.key});
+class FilterScreen extends StatelessWidget {
+  FilterScreen({super.key});
 
-  @override
-  State<FilterScreen> createState() => _FilterScreenState();
-}
-
-class _FilterScreenState extends State<FilterScreen> {
   TextEditingController fromDateController = TextEditingController();
+
   TextEditingController toDateController = TextEditingController();
+
   DateTime currentDate = DateTime.now();
+
   var fromDateFormKey = GlobalKey<FormState>();
 
   @override
@@ -45,13 +46,6 @@ class _FilterScreenState extends State<FilterScreen> {
                         controller: fromDateController,
                         hintText: 'From',
                         suffixIcon: ImagePaths.calendar,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "From Date is Required";
-                          } else {
-                            return null;
-                          }
-                        },
                         onTap: () {
                           if (Platform.isIOS) {
                             showCupertinoModalPopup(
@@ -91,13 +85,6 @@ class _FilterScreenState extends State<FilterScreen> {
                         controller: toDateController,
                         hintText: 'To',
                         suffixIcon: ImagePaths.calendar,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "To Date is Required";
-                          } else {
-                            return null;
-                          }
-                        },
                         onTap: () {
                           if (Platform.isIOS) {
                             showCupertinoModalPopup(
@@ -143,6 +130,11 @@ class _FilterScreenState extends State<FilterScreen> {
                         onTap: () {
                           fromDateController.clear();
                           toDateController.clear();
+                          // BlocProvider.of<ShopsBloc>(context)
+                          //     .add(ApplyFilterInShopsEvent(
+                          //   fromDate: "",
+                          //   toDate: "",
+                          // ));
                         },
                       ),
                     ),
@@ -151,13 +143,32 @@ class _FilterScreenState extends State<FilterScreen> {
                       child: DefaultButton(
                         text: "Apply",
                         onTap: () {
-                          fromDateFormKey.currentState!.validate();
+                          if (fromDateController.text.isNotEmpty &&
+                              toDateController.text.isEmpty) {
+                            BlocProvider.of<ShopsBloc>(context).add(
+                                FromDateFilterEvent(
+                                    fromDate: fromDateController.text));
+                          } else if (toDateController.text.isNotEmpty &&
+                              fromDateController.text.isEmpty) {
+                            BlocProvider.of<ShopsBloc>(context).add(
+                                ToDateFilterEvent(
+                                    toDate: toDateController.text));
+                          } else if (fromDateController.text.isNotEmpty &&
+                              toDateController.text.isNotEmpty) {
+                            BlocProvider.of<ShopsBloc>(context)
+                                .add(BeetweenDatesFilterEvent(
+                              fromDate: fromDateController.text,
+                              toDate: toDateController.text,
+                            ));
+                          }
+
+                          // fromDateFormKey.currentState!.validate();
                         },
                       ),
                     ),
                   ],
                 ),
-                Text(toDateController.text)
+                // Text(toDateController.text)
               ],
             ),
           )),
